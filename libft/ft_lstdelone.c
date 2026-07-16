@@ -1,20 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   ft_lstdelone.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ssokhats <ssokhats@student.42warsaw.pl>    +#+  +:+       +#+        */
+/*   By: ssokhats <ssokhats@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/07/13 18:32:05 by esyaman           #+#    #+#             */
-/*   Updated: 2026/07/16 17:36:34 by ssokhats         ###   ########.fr       */
+/*   Created: 2026/06/22 14:38:15 by ssokhats          #+#    #+#             */
+/*   Updated: 2026/06/23 11:34:12 by ssokhats         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./include/push_swap.h"
+#include "libft.h"
+#include <stdlib.h>
 
-int	main(int argc, char **argv)
+void	ft_lstdelone(t_list *lst, void (*del)(void*))
 {
-	t_stack	stack_a;
-	t_stack	stack_b;
-
+	del(lst->content);
+	free(lst);
 }

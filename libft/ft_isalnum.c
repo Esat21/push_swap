@@ -1,20 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   ft_isalnum.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ssokhats <ssokhats@student.42warsaw.pl>    +#+  +:+       +#+        */
+/*   By: ssokhats <ssokhats@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/07/13 18:32:05 by esyaman           #+#    #+#             */
-/*   Updated: 2026/07/16 17:36:34 by ssokhats         ###   ########.fr       */
+/*   Created: 2026/06/15 18:30:43 by ssokhats          #+#    #+#             */
+/*   Updated: 2026/06/15 18:32:42 by ssokhats         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./include/push_swap.h"
-
-int	main(int argc, char **argv)
+int	ft_isalnum(int c)
 {
-	t_stack	stack_a;
-	t_stack	stack_b;
-
+	if ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z')
+		|| (c >= '0' && c <= '9'))
+	{
+		return (1);
+	}
+	return (0);
 }

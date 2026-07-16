@@ -1,25 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   stack_creation.c                                   :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ssokhats <ssokhats@student.42warsaw.pl>    +#+  +:+       +#+        */
+/*   By: ssokhats <ssokhats@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/07/13 18:46:13 by esyaman           #+#    #+#             */
-/*   Updated: 2026/07/16 17:41:23 by ssokhats         ###   ########.fr       */
+/*   Created: 2026/06/18 14:11:13 by ssokhats          #+#    #+#             */
+/*   Updated: 2026/06/19 11:17:15 by ssokhats         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/push_swap.h"
+#include "libft.h"
 
-t_stack	*create_stack_a(int argc, char **argv)
+int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
-	int		i;
-	t_stack	*stack_a;
+	size_t	i;
 
-	stack_a = init_stack();
 	i = 0;
-	while (++i < argc)
-		stack_add_back(stack_a, stacknew(ft_atoi(argv[i])));
-	return (stack_a);
+	if (n < 1)
+		return (0);
+	while (s1[i] && (s1[i] == s2[i]) && i < n)
+		i++;
+	if (i == n)
+		return (0);
+	return ((unsigned char)s1[i] - (unsigned char)s2[i]);
 }

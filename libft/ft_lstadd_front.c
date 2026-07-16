@@ -1,20 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   ft_lstadd_front.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ssokhats <ssokhats@student.42warsaw.pl>    +#+  +:+       +#+        */
+/*   By: ssokhats <ssokhats@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/07/13 18:32:05 by esyaman           #+#    #+#             */
-/*   Updated: 2026/07/16 17:36:34 by ssokhats         ###   ########.fr       */
+/*   Created: 2026/06/22 13:22:17 by ssokhats          #+#    #+#             */
+/*   Updated: 2026/06/23 16:09:41 by ssokhats         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./include/push_swap.h"
+#include "libft.h"
 
-int	main(int argc, char **argv)
+void	ft_lstadd_front(t_list **lst, t_list *new)
 {
-	t_stack	stack_a;
-	t_stack	stack_b;
-
+	new->next = *lst;
+	*lst = new;
 }

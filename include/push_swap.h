@@ -6,7 +6,7 @@
 /*   By: ssokhats <ssokhats@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/13 18:06:09 by esyaman           #+#    #+#             */
-/*   Updated: 2026/07/16 14:21:24 by ssokhats         ###   ########.fr       */
+/*   Updated: 2026/07/16 17:40:48 by ssokhats         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define PUSH_SWAP_H
 
 # include <stdlib.h>
+# include "../libft/libft.h"
 
 typedef struct s_node
 {
