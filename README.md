@@ -2,7 +2,8 @@
 
 - (Done) Disorder metric
 - (Done) Linked lists creation
-- Import Libft
+- (Done) Import Libft
+- (Done) Rules creation
 - Rules implementation
 - Reading arguments (flags, input stdin)
 

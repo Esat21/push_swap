@@ -6,7 +6,7 @@
 /*   By: esyaman <esyaman@student.42warsaw.pl>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/16 17:40:28 by esyaman           #+#    #+#             */
-/*   Updated: 2026/07/16 17:58:24 by esyaman          ###   ########.fr       */
+/*   Updated: 2026/07/16 18:43:05 by esyaman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,34 @@ void	stack_swap(t_stack *lst)
 
 void	stack_push(t_stack *dest, t_stack *src)
 {
-	dest->first->next =
-	dest->first = src->first;
+	t_node	*buff;
+
+	buff = src->first->next;
+	stack_add_front(dest, src->first);
+	src->first = buff;
 }
+
+void	stack_rotate(t_stack *lst)
+{
+	lst->last->next = lst->first;
+	lst->last = lst->first;
+	lst->first = lst->first->next;
+	lst->last->next = NULL;
+}
+
+void	stack_rrotate(t_stack *lst)
+{
+	t_node	*second_last;
+
+	second_last = lst->first;
+	while (second_last->next->next)
+		second_last = second_last->next;
+	lst->last->next = lst->first;
+	lst->first = lst->last;
+	lst->last = second_last;
+	second_last->next = NULL;
+}
+
 /*
 first->next = second
 second->next = third

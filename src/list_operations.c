@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   list_operations.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ssokhats <ssokhats@student.42warsaw.pl>    +#+  +:+       +#+        */
+/*   By: esyaman <esyaman@student.42warsaw.pl>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/13 18:45:45 by esyaman           #+#    #+#             */
-/*   Updated: 2026/07/16 17:13:42 by ssokhats         ###   ########.fr       */
+/*   Updated: 2026/07/16 18:07:57 by esyaman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,4 +85,12 @@ void	stack_add_back(t_stack *lst, t_node *new)
 	lst->last->next = new;
 	lst->last = new;
 	lst->size++;
+}
+
+void	stack_add_front(t_stack *lst, t_node *new)
+{
+	if (new == NULL || lst == NULL)
+		return ;
+	new->next = lst->first;
+	lst->first = new;
 }
