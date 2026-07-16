@@ -6,7 +6,7 @@
 /*   By: esyaman <esyaman@student.42warsaw.pl>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/13 18:45:45 by esyaman           #+#    #+#             */
-/*   Updated: 2026/07/13 18:56:14 by esyaman          ###   ########.fr       */
+/*   Updated: 2026/07/16 12:52:33 by esyaman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,4 +43,19 @@ void	stack_add_back(t_stack **lst, t_stack *new)
 		return ;
 	}
 	stacklast(*lst)->next = new;
+}
+
+int	stack_size(t_stack *lst)
+{
+	int	i;
+
+	i = 0;
+	if (lst == NULL)
+		return (0);
+	while (lst)
+	{
+		lst = lst->next;
+		i++;
+	}
+	return (i);
 }
