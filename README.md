@@ -1,7 +1,8 @@
 # push_swap
 
-- Disorder metric
-- Linked lists creation
+- (Done) Disorder metric
+- (Done) Linked lists creation
+- Import Libft
 - Rules implementation
 - Reading arguments (flags, input stdin)
 
