@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ssokhats <ssokhats@student.42warsaw.pl>    +#+  +:+       +#+        */
+/*   By: esyaman <esyaman@student.42warsaw.pl>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/13 18:06:09 by esyaman           #+#    #+#             */
-/*   Updated: 2026/07/16 13:11:40 by ssokhats         ###   ########.fr       */
+/*   Updated: 2026/07/16 13:24:54 by esyaman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,5 @@ typedef struct s_stack
 void	stack_add_back(t_stack **lst, t_stack *new);
 t_stack	*stacklast(t_stack *lst);
 t_stack	*stacknew(int value);
-int		ft_atoi_ps(const char *ptr);
-int		stack_size(t_stack *lst);
 
 #endif
