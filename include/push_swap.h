@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: esyaman <esyaman@student.42warsaw.pl>      +#+  +:+       +#+        */
+/*   By: ssokhats <ssokhats@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/13 18:06:09 by esyaman           #+#    #+#             */
-/*   Updated: 2026/07/16 18:08:01 by esyaman          ###   ########.fr       */
+/*   Updated: 2026/07/17 12:00:47 by ssokhats         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,9 @@
 
 typedef struct s_node
 {
-	int		value;
-	t_node	*next;
+	int				value;
+	struct s_node	*next;
+	unsigned int	normalized;
 }			t_node;
 
 typedef struct s_stack
@@ -29,9 +30,18 @@ typedef struct s_stack
 	size_t	size;
 }			t_stack;
 
-void	stack_add_back(t_stack *lst, t_node *new);
-t_node	*stacknew(int value);
+t_node	*newnode(int value);
+
 t_stack	*init_stack(void);
+
 void	stack_add_front(t_stack *lst, t_node *new);
+
+void	stack_add_back(t_stack *lst, t_node *new);
+
+void	free_lst(t_node **lst);
+
+void	free_stacks(t_stack **a, t_stack **b);
+
+float	compute_disorder(t_stack *stack);
 
 #endif
