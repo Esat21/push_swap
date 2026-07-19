@@ -22,7 +22,6 @@ int	main(int argc, char **argv)
 	stack_b = init_stack();
 	stack_normalisation(stack_a->first);
 	print_stack(stack_a);
-	printf("%ld\n", stack_a->size);
 	selection_sort(stack_a, stack_b);
 	print_stack(stack_a);
 	free_stacks(&stack_a, &stack_b);

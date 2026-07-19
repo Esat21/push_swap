@@ -27,7 +27,7 @@ typedef struct s_stack
 {
 	t_node	*first;
 	t_node	*last;
-	size_t	size;
+	int		size;
 }			t_stack;
 
 t_node	*newnode(int value);
