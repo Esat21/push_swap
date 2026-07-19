@@ -81,8 +81,6 @@ void	stack_rrotate(t_stack *lst);
 
 void	selection_sort(t_stack *stack_a, t_stack *stack_b, t_bench_metrics *m);
 
-void	print_metrics(t_bench_metrics *metrics);
-
 void	rules_handling(
 	t_stack *a,
 	t_stack *b,
@@ -92,5 +90,7 @@ void	rules_handling(
 
 // additional functions (not needed in proj)
 void	print_stack(t_stack *stack);
+
+void	print_metrics(t_bench_metrics *metrics);
 
 #endif
