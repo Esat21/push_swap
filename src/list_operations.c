@@ -32,7 +32,7 @@ t_node	*newnode(int value)
 		return (NULL);
 	new_node->value = value;
 	new_node->next = NULL;
-	new_node->normalized = 0;
+	new_node->normalised = 0;
 	return (new_node);
 }
 

@@ -20,7 +20,7 @@ typedef struct s_node
 {
 	int				value;
 	struct s_node	*next;
-	unsigned int	normalized;
+	unsigned int	normalised;
 }			t_node;
 
 typedef struct s_stack

@@ -29,6 +29,7 @@ void	stack_push(t_stack *dest, t_stack *src)
 	buff = src->first->next;
 	stack_add_front(dest, src->first);
 	src->first = buff;
+	src->size--;
 }
 
 void	stack_rotate(t_stack *lst)
