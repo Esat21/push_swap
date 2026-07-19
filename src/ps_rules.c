@@ -6,7 +6,7 @@
 /*   By: esyaman <esyaman@student.42warsaw.pl>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/16 17:40:28 by esyaman           #+#    #+#             */
-/*   Updated: 2026/07/16 18:43:05 by esyaman          ###   ########.fr       */
+/*   Updated: 2026/07/19 16:07:38 by esyaman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ void	stack_push(t_stack *dest, t_stack *src)
 	stack_add_front(dest, src->first);
 	src->first = buff;
 	src->size--;
+	if (src->size == 1)
+		src->last = src->first;
 }
 
 void	stack_rotate(t_stack *lst)
@@ -52,16 +54,3 @@ void	stack_rrotate(t_stack *lst)
 	lst->last = second_last;
 	second_last->next = NULL;
 }
-
-/*
-first->next = second
-second->next = third
-third->next = fourth
-
-buff = second
-
-
-
-
-
-*/

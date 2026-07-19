@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ssokhats <ssokhats@student.42warsaw.pl>    +#+  +:+       +#+        */
+/*   By: esyaman <esyaman@student.42warsaw.pl>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/13 18:06:09 by esyaman           #+#    #+#             */
-/*   Updated: 2026/07/17 12:00:47 by ssokhats         ###   ########.fr       */
+/*   Updated: 2026/07/19 16:11:13 by esyaman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,5 +43,15 @@ void	free_lst(t_node **lst);
 void	free_stacks(t_stack **a, t_stack **b);
 
 float	compute_disorder(t_stack *stack);
+
+void	stack_normalisation(t_node *stack);
+
+void	stack_swap(t_stack *lst);
+
+void	stack_push(t_stack *dest, t_stack *src);
+
+void	stack_rotate(t_stack *lst);
+
+void	stack_rrotate(t_stack *lst);
 
 #endif
