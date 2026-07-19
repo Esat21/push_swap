@@ -83,6 +83,7 @@ void	stack_add_front(t_stack *lst, t_node *new)
 		return ;
 	if (lst->first == NULL)
 	{
+		new->next = NULL;
 		lst->first = new;
 		lst->last = new;
 		lst->size++;

@@ -30,7 +30,6 @@ int	get_index(t_node *node, int val)
 void	selection_sort(t_stack *stack_a, t_stack *stack_b)
 {
 	int	i;
-	int	n;
 
 	i = 0;
 	while (stack_a->size > 0)
@@ -43,6 +42,7 @@ void	selection_sort(t_stack *stack_a, t_stack *stack_b)
 		}
 		if ((stack_a->size / 2 - get_index(stack_a->first, i)) < 0)
 			stack_rrotate(stack_a);
+			
 		else
 			stack_rotate(stack_a);
 	}
