@@ -11,14 +11,18 @@
 /* ************************************************************************** */
 
 #include "./include/push_swap.h"
+#include <stdio.h>
 
 int	main(int argc, char **argv)
 {
 	t_stack *stack_a;
 	t_stack	*stack_b;
-	// input_handler(t_stack stack_a);
+
 	stack_a = create_stack_a(argc, argv);
 	stack_b = init_stack();
+	stack_normalisation(stack_a->first);
+	print_stack(stack_a);
+	printf("%ld\n", stack_a->size);
 	selection_sort(stack_a, stack_b);
 	print_stack(stack_a);
 	free_stacks(&stack_a, &stack_b);

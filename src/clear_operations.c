@@ -54,14 +54,14 @@ void	free_stacks(t_stack **a, t_stack **b)
 {
 	if (a && *a)
 	{
-		free_lst(&(*a)->first);
+		free_lst(&((*a)->first));
 		(*a)->last = NULL;
 		free(*a);
 		*a = NULL;
 	}
 	if (b && *b)
 	{
-		free_lst(&(*b)->first);
+		free_lst(&((*b)->first));
 		(*b)->last = NULL;
 		free(*b);
 		*b = NULL;

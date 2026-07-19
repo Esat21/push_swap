@@ -19,7 +19,7 @@ int	get_index(t_node *node, int val)
 	i = 0;
 	if (!node)
 		return (-1);
-	while (node->value != val)
+	while (node && node->normalised != val)
 	{
 		node = node->next;
 		i++;
@@ -33,9 +33,9 @@ void	selection_sort(t_stack *stack_a, t_stack *stack_b)
 	int	n;
 
 	i = 0;
-	while (stack_a->first)
+	while (stack_a->size > 0)
 	{
-		if (stack_a->first->normalised == i)
+		if (stack_a->first && stack_a->first->normalised == i)
 		{
 			stack_push(stack_b, stack_a);
 			i++;
@@ -46,6 +46,6 @@ void	selection_sort(t_stack *stack_a, t_stack *stack_b)
 		else
 			stack_rotate(stack_a);
 	}
-	while (stack_b->first)
+	while (stack_b->size > 0)
 		stack_push(stack_a, stack_b);
 }

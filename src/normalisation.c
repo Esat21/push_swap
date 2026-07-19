@@ -33,7 +33,7 @@ void	stack_normalisation(t_node *stack)
 		j = stack;
 		while (j)
 		{
-			if (i->value < j->value)
+			if (i->value > j->value)
 				i->normalised++;
 			j = j->next;
 		}

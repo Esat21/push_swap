@@ -26,6 +26,8 @@ void	stack_push(t_stack *dest, t_stack *src)
 {
 	t_node	*buff;
 
+	if (!src->first)
+		return ;
 	buff = src->first->next;
 	stack_add_front(dest, src->first);
 	src->first = buff;
@@ -46,6 +48,8 @@ void	stack_rrotate(t_stack *lst)
 {
 	t_node	*second_last;
 
+	if (lst->size <= 1)
+		return ;
 	second_last = lst->first;
 	while (second_last->next->next)
 		second_last = second_last->next;
