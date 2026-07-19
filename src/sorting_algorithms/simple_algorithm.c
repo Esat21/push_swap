@@ -6,7 +6,7 @@
 /*   By: esyaman <esyaman@student.42warsaw.pl>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/19 15:36:05 by esyaman           #+#    #+#             */
-/*   Updated: 2026/07/19 16:34:21 by esyaman          ###   ########.fr       */
+/*   Updated: 2026/07/19 16:45:19 by esyaman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	get_index(t_node *node, int val)
 	return (i);
 }
 
-void selection_sort(t_stack *stack_a, t_stack *stack_b)
+void	selection_sort(t_stack *stack_a, t_stack *stack_b)
 {
 	int	i;
 	int	n;

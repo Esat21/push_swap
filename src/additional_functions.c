@@ -1,26 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   additional_functions.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: esyaman <esyaman@student.42warsaw.pl>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/07/13 18:32:05 by esyaman           #+#    #+#             */
-/*   Updated: 2026/07/19 17:08:19 by esyaman          ###   ########.fr       */
+/*   Created: 2026/07/19 16:57:40 by esyaman           #+#    #+#             */
+/*   Updated: 2026/07/19 17:01:46 by esyaman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./include/push_swap.h"
+#include "../include/push_swap.h"
+#include <stdio.h>
 
-int	main(int argc, char **argv)
+void	print_stack(t_stack *stack)
 {
-	t_stack *stack_a;
-	t_stack	*stack_b;
-	// input_handler(t_stack stack_a);
-	stack_a = create_stack_a(argc, argv);
-	stack_b = init_stack();
-	selection_sort(stack_a, stack_b);
-	print_stack(stack_a);
-	free_stacks(&stack_a, &stack_b);
-	return (0);
+	t_node	*curr;
+
+	curr = stack->first;
+	while(curr)
+	{
+		printf("%d ", curr->value);
+		curr = curr->next;
+	}
+	printf("\n");
 }

@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   clear_operations.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ssokhats <ssokhats@student.42warsaw.pl>    +#+  +:+       +#+        */
+/*   By: esyaman <esyaman@student.42warsaw.pl>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/17 10:42:22 by ssokhats          #+#    #+#             */
-/*   Updated: 2026/07/17 11:22:06 by ssokhats         ###   ########.fr       */
+/*   Updated: 2026/07/19 17:07:33 by esyaman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <../include/push_swap.h>
+#include "../include/push_swap.h"
 
 /**
  * @brief Frees all nodes in a linked list and nullifies the head pointer.
