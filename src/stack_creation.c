@@ -46,3 +46,27 @@ t_stack	*create_stack_a(int argc, char **argv)
 		stack_add_back(stack_a, newnode(ft_atoi(argv[i])));
 	return (stack_a);
 }
+
+t_bench_metrics	*bench_metrics_init(void)
+{
+	t_bench_metrics	*metrics;
+
+	metrics = malloc(sizeof(t_bench_metrics));
+	if (!metrics)
+		return (NULL);
+	metrics->operations = 0;
+	metrics->sa = 0;
+	metrics->sb = 0;
+	metrics->ss = 0;
+	metrics->pa = 0;
+	metrics->pb = 0;
+	metrics->ra = 0;
+	metrics->rb = 0;
+	metrics->rr = 0;
+	metrics->rra = 0;
+	metrics->rrb = 0;
+	metrics->rrr = 0;
+	metrics->disorder = 0;
+	metrics->strategy = NULL;
+	return (metrics);
+}

@@ -25,3 +25,8 @@ void	print_stack(t_stack *stack)
 	}
 	printf("\n");
 }
+
+void	print_metrics(t_bench_metrics *metrics)
+{
+	printf("operations: %d\ndisorder: %.2f\nsa: %d\nsb: %d\nss: %d\npa: %d\npb: %d\nra: %d\nrb: %d\nrr: %d\nrra: %d\nrrb: %d\nrrr: %d\n", metrics->operations, metrics->disorder, metrics->sa, metrics->sb, metrics->ss, metrics->pa, metrics->pb, metrics->ra, metrics->rb, metrics->rr, metrics->rra, metrics->rrb, metrics->rrr);
+}

@@ -30,11 +30,32 @@ typedef struct s_stack
 	int		size;
 }			t_stack;
 
+typedef struct s_bench_metrics
+{
+	int	operations;
+	int		sa;
+	int		sb;
+	int		ss;
+	int		pa;
+	int		pb;
+	int		ra;
+	int		rb;
+	int		rr;
+	int		rra;
+	int		rrb;
+	int		rrr;
+	char	*strategy;
+	float	disorder;
+}				t_bench_metrics;
+
+
 t_node	*newnode(int value);
 
 t_stack	*init_stack(void);
 
 t_stack	*create_stack_a(int argc, char **argv);
+
+t_bench_metrics	*bench_metrics_init(void);
 
 void	stack_add_front(t_stack *lst, t_node *new);
 
@@ -43,6 +64,8 @@ void	stack_add_back(t_stack *lst, t_node *new);
 void	free_lst(t_node **lst);
 
 void	free_stacks(t_stack **a, t_stack **b);
+
+void	free_metrics(t_bench_metrics **metrix);
 
 float	compute_disorder(t_stack *stack);
 
@@ -56,7 +79,16 @@ void	stack_rotate(t_stack *lst);
 
 void	stack_rrotate(t_stack *lst);
 
-void	selection_sort(t_stack *stack_a, t_stack *stack_b);
+void	selection_sort(t_stack *stack_a, t_stack *stack_b, t_bench_metrics *m);
+
+void	print_metrics(t_bench_metrics *metrics);
+
+void	rules_handling(
+	t_stack *a,
+	t_stack *b,
+	char *rule,
+	t_bench_metrics *metrics
+);
 
 // additional functions (not needed in proj)
 void	print_stack(t_stack *stack);

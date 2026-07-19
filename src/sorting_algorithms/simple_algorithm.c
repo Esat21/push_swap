@@ -27,7 +27,7 @@ int	get_index(t_node *node, int val)
 	return (i);
 }
 
-void	selection_sort(t_stack *stack_a, t_stack *stack_b)
+void	selection_sort(t_stack *stack_a, t_stack *stack_b, t_bench_metrics *m)
 {
 	int	i;
 
@@ -36,16 +36,19 @@ void	selection_sort(t_stack *stack_a, t_stack *stack_b)
 	{
 		if (stack_a->first && stack_a->first->normalised == i)
 		{
-			stack_push(stack_b, stack_a);
+			rules_handling(stack_a, stack_b, "pb", m);
+			// stack_push(stack_b, stack_a);
 			i++;
 			continue ;
 		}
 		if ((stack_a->size / 2 - get_index(stack_a->first, i)) < 0)
-			stack_rrotate(stack_a);
-			
+			rules_handling(stack_a, stack_b, "rra", m);
+			// stack_rrotate(stack_a);
 		else
-			stack_rotate(stack_a);
+			rules_handling(stack_a, stack_b, "ra", m);
+			// stack_rotate(stack_a);
 	}
 	while (stack_b->size > 0)
-		stack_push(stack_a, stack_b);
+		rules_handling(stack_a, stack_b, "pa", m);
+		// stack_push(stack_a, stack_b);
 }
