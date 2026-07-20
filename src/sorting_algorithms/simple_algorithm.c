@@ -37,18 +37,14 @@ void	selection_sort(t_stack *stack_a, t_stack *stack_b, t_bench_metrics *m)
 		if (stack_a->first && stack_a->first->normalised == i)
 		{
 			rules_handling(stack_a, stack_b, "pb", m);
-			// stack_push(stack_b, stack_a);
 			i++;
 			continue ;
 		}
 		if ((stack_a->size / 2 - get_index(stack_a->first, i)) < 0)
 			rules_handling(stack_a, stack_b, "rra", m);
-			// stack_rrotate(stack_a);
 		else
 			rules_handling(stack_a, stack_b, "ra", m);
-			// stack_rotate(stack_a);
 	}
 	while (stack_b->size > 0)
 		rules_handling(stack_a, stack_b, "pa", m);
-		// stack_push(stack_a, stack_b);
 }

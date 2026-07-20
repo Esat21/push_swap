@@ -79,7 +79,11 @@ void	stack_rotate(t_stack *lst);
 
 void	stack_rrotate(t_stack *lst);
 
+int		get_index(t_node *node, int val);
+
 void	selection_sort(t_stack *stack_a, t_stack *stack_b, t_bench_metrics *m);
+
+void	chunk_sort(t_stack *a, t_stack *b, t_bench_metrics *metrix);
 
 void	rules_handling(
 	t_stack *a,
