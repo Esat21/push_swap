@@ -25,8 +25,10 @@ int	main(int argc, char **argv)
 	metrics->disorder = compute_disorder(stack_a);
 	stack_normalisation(stack_a->first);
 	print_stack(stack_a);
-	chunk_sort(stack_a, stack_b, metrics);
+	r_insertion_sort(stack_a, stack_b, metrics);
 	print_stack(stack_a);
+	printf("\n");
+	print_stack(stack_b);
 	print_metrics(metrics);
 	free_metrics(&metrics);
 	free_stacks(&stack_a, &stack_b);

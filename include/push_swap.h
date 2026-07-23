@@ -15,6 +15,7 @@
 
 # include <stdlib.h>
 # include "../libft/libft.h"
+# include <stdio.h>
 
 typedef struct s_node
 {
@@ -25,9 +26,9 @@ typedef struct s_node
 
 typedef struct s_stack
 {
-	t_node	*first;
-	t_node	*last;
-	int		size;
+	t_node			*first;
+	t_node			*last;
+	unsigned int	size;
 }			t_stack;
 
 typedef struct s_bench_metrics
@@ -79,11 +80,13 @@ void	stack_rotate(t_stack *lst);
 
 void	stack_rrotate(t_stack *lst);
 
-int		get_index(t_node *node, int val);
+int		get_index(t_node *node, unsigned int val);
 
 void	selection_sort(t_stack *stack_a, t_stack *stack_b, t_bench_metrics *m);
 
 void	chunk_sort(t_stack *a, t_stack *b, t_bench_metrics *metrix);
+
+void	r_insertion_sort(t_stack *a, t_stack *b, t_bench_metrics *m);
 
 void	rules_handling(
 	t_stack *a,

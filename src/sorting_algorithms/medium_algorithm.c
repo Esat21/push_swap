@@ -22,11 +22,9 @@ int		ft_sqrt(int n)
 	return (i - 1);
 }
 
-static int	get_index_in_range(t_node *node, int range)
+static int	get_index_in_range(t_node *node, unsigned int range)
 {
 	int	i;
-	int	j;
-	int	last_match;
 
 	i = 0;
 	if (!node)
@@ -41,9 +39,9 @@ static int	get_index_in_range(t_node *node, int range)
 
 void	chunk_sort(t_stack *a, t_stack *b, t_bench_metrics *metrix)
 {
-	int	i;
-	int	j;
-	int	chunk_size;
+	unsigned int	i;
+	int				j;
+	unsigned int	chunk_size;
 
 	i = 0;
 	j = 1;

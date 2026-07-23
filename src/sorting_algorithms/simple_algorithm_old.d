@@ -12,7 +12,7 @@
 
 #include "../../include/push_swap.h"
 
-int	get_index(t_node *node, unsigned int val)
+int	get_index(t_node *node, int val)
 {
 	int	i;
 
@@ -27,39 +27,24 @@ int	get_index(t_node *node, unsigned int val)
 	return (i);
 }
 
-int		target_pos_calc(t_node *b_curr, t_stack *a)
+void	selection_sort(t_stack *stack_a, t_stack *stack_b, t_bench_metrics *m)
 {
-	t_node	*next;
-	t_node	*a_current;
-
-	a_current = a->first;
-	while(a_current)
-	{
-		if (!a_current->next && a->size > 1)
-			next = a->first;
-		else
-			next = a_current->next;
-		if ((b_curr->normalised < a_current->normalised) && (b_curr->normalised > next->normalised))
-			return (next->normalised); // returning the node we put the number after. I.e. for a:2 and b:4 3 1, we return 1. Rethink?
-		else
-			a_current = a_current->next;
-	}
-	return (-1);
-}
-
-void	r_insertion_sort(t_stack *a, t_stack *b, t_bench_metrics *m)
-{
-	unsigned int	i;
+	int	i;
 
 	i = 0;
-	while (a->first->next && i < a->size - 1)
+	while (stack_a->size > 0)
 	{
-		if (a->first->normalised < a->last->normalised)
+		if (stack_a->first && stack_a->first->normalised == i)
 		{
-			rules_handling(a, b, "pb", m);
+			rules_handling(stack_a, stack_b, "pb", m);
+			i++;
 			continue ;
 		}
-		rules_handling(a, b, "ra", m);
-		i++;
+		if ((stack_a->size / 2 - get_index(stack_a->first, i)) < 0)
+			rules_handling(stack_a, stack_b, "rra", m);
+		else
+			rules_handling(stack_a, stack_b, "ra", m);
 	}
+	while (stack_b->size > 0)
+		rules_handling(stack_a, stack_b, "pa", m);
 }

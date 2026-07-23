@@ -21,3 +21,5 @@
 
 # 16/07/2026
 - Added int	stack_size(t_stack *lst) to get size of the stack (number of numbers). To be used for implementation in e.g. disorder_metric.
+
+cc push_swap.c src/*.c src/sorting_algorithms/*.c libft/libft.a
