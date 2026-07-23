@@ -51,9 +51,9 @@ unsigned int	target_pos_calc(t_node *a_curr, t_stack *b)
 			return (next->normalised);
 		b_current = b_current->next;
 	}
-	if (a_curr->normalised > maximum->normalised)
+	if (a_curr->normalised > maximum->normalised || a_curr->normalised < minimum->normalised)
 		return (maximum->normalised);
-	return (minimum->normalised);
+	return (maximum->normalised);
 }
 
 void	insertion_sort(t_stack *a, t_stack *b, t_bench_metrics *m)
@@ -71,21 +71,20 @@ void	insertion_sort(t_stack *a, t_stack *b, t_bench_metrics *m)
 			rules_handling(a, b, "pb", m);
 			continue ;
 		}
-		if (((b->size / 2) - get_index(b->first, target_pos)) > 0)
-			rules_handling(a, b, "rrb", m);
-		else
+		if ((get_index(b->first, target_pos) * 2) <= (int)b->size)
 			rules_handling(a, b, "rb", m);
+		else
+			rules_handling(a, b, "rrb", m);
 	}
 	while (b->first->normalised != b->size - 1)
 	{
-		if ((b->size / 2 - get_index(b->first, b->size - 1)) > 0)
-			rules_handling(a, b, "rrb", m);
-		else
+		if ((get_index(b->first, b->size - 1) * 2) <= (int)b->size)
 			rules_handling(a, b, "rb", m);
+		else
+			rules_handling(a, b, "rrb", m);
 	}
 	while (b->size > 0)
 		rules_handling(a, b, "pa", m);
-	rules_handling(a, b, "sa", m);
 }
 
 /* 4 3 2 8 6
