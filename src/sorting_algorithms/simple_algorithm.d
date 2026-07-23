@@ -12,7 +12,7 @@
 
 #include "../../include/push_swap.h"
 
-int	get_index(t_node *node, int val)
+int	get_index(t_node *node, unsigned int val)
 {
 	int	i;
 
@@ -27,53 +27,39 @@ int	get_index(t_node *node, int val)
 	return (i);
 }
 
-int		target_pos_calc(t_node *a_curr, t_stack *b)
+int		target_pos_calc(t_node *b_curr, t_stack *a)
 {
 	t_node	*next;
-	t_node	*b_current;
+	t_node	*a_current;
 
-	b_current = b->first;
-	while(b_current)
+	a_current = a->first;
+	while(a_current)
 	{
-		if (!b_current->next && b->size > 1)
-			next = b->first;
+		if (!a_current->next && a->size > 1)
+			next = a->first;
 		else
-			next = b_current->next;
-		if ((a_curr->normalised < b_current->normalised) && (a_curr->normalised > next->normalised))
+			next = a_current->next;
+		if ((b_curr->normalised < a_current->normalised) && (b_curr->normalised > next->normalised))
 			return (next->normalised); // returning the node we put the number after. I.e. for a:2 and b:4 3 1, we return 1. Rethink?
 		else
-			b_current = b_current->next;
+			a_current = a_current->next;
 	}
 	return (-1);
 }
 
-void	insertion_sort(t_stack *a, t_stack *b, t_bench_metrics *m)
+void	r_insertion_sort(t_stack *a, t_stack *b, t_bench_metrics *m)
 {
-	int	target_pos;
+	unsigned int	i;
 
-	rules_handling(a, b, "pb", m);
-	rules_handling(a, b, "pb", m);
-	while (a->first && a->size > 0)
+	i = 0;
+	while (a->first->next && i < a->size - 1)
 	{
-		target_pos = target_pos_calc(a->first, b);
-		printf("\nTarget: %d\n", target_pos);
-		if (b->first && b->first->normalised == target_pos)
+		if (a->first->normalised < a->last->normalised)
 		{
 			rules_handling(a, b, "pb", m);
 			continue ;
 		}
-		if ((b->size / 2 - get_index(b->first, target_pos)) < 0)
-			rules_handling(a, b, "rrb", m);
-		else
-			rules_handling(a, b, "rb", m);
+		rules_handling(a, b, "ra", m);
+		i++;
 	}
-	while (b->first->normalised != b->size - 1)
-	{
-		if ((b->size / 2 - get_index(b->first, b->size - 1)) < 0)
-			rules_handling(a, b, "rrb", m);
-		else
-			rules_handling(a, b, "rb", m);
-	}
-	while (b->size > 0)
-		rules_handling(a, b, "pa", m);
 }

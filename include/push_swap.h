@@ -86,7 +86,7 @@ void	selection_sort(t_stack *stack_a, t_stack *stack_b, t_bench_metrics *m);
 
 void	chunk_sort(t_stack *a, t_stack *b, t_bench_metrics *metrix);
 
-void	r_insertion_sort(t_stack *a, t_stack *b, t_bench_metrics *m);
+void	insertion_sort(t_stack *a, t_stack *b, t_bench_metrics *m);
 
 void	rules_handling(
 	t_stack *a,
