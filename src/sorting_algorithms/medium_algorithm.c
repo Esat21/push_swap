@@ -57,7 +57,7 @@ void	chunk_sort(t_stack *a, t_stack *b, t_bench_metrics *metrix)
 
 	i = 0;
 	j = 1;
-	chunk_size = ft_sqrt(a->size);
+	chunk_size = ft_sqrt(a->size) * 2;
 	while (a->size > 0)
 	{
 		if (a->first->normalised < (chunk_size * j))
