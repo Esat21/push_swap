@@ -25,6 +25,8 @@ int		ft_sqrt(int n)
 static int	get_index_in_range(t_node *node, unsigned int range)
 {
 	int	i;
+	int	j;
+	int	last_occurrence;
 
 	i = 0;
 	if (!node)
@@ -34,6 +36,16 @@ static int	get_index_in_range(t_node *node, unsigned int range)
 		node = node->next;
 		i++;
 	}
+	j = i;
+	while (node)
+	{
+		if (node->normalised < range)
+			last_occurrence = j;
+		j++;
+		node = node->next;
+	}
+	if (j - last_occurrence < i)
+		return (last_occurrence);
 	return (i);
 }
 
@@ -45,17 +57,18 @@ void	chunk_sort(t_stack *a, t_stack *b, t_bench_metrics *metrix)
 
 	i = 0;
 	j = 1;
-	chunk_size = ft_sqrt(a->size) * 2;
+	chunk_size = ft_sqrt(a->size);
 	while (a->size > 0)
 	{
 		if (a->first->normalised < (chunk_size * j))
 		{
 			rules_handling(a, b, "pb", metrix);
 			i++;
-			if (b->first->normalised < (chunk_size * j + 2) - (chunk_size / 2))
+			if (b->first->normalised < ((chunk_size * j) - (chunk_size / 2)))
 				rules_handling(a, b, "rb", metrix);
+			continue ;
 		}
-		else if ((a->size / 2 - get_index_in_range(a->first, chunk_size * j)) < 0)
+		if (((int)a->size / 2 - get_index_in_range(a->first, chunk_size * j)) < 0)
 			rules_handling(a, b, "rra", metrix);
 		else
 			rules_handling(a, b, "ra", metrix);
@@ -69,7 +82,7 @@ void	chunk_sort(t_stack *a, t_stack *b, t_bench_metrics *metrix)
 			rules_handling(a, b, "pa", metrix);
 			continue ;
 		}
-		if ((b->size / 2 - get_index(b->first, b->size - 1)) < 0)
+		if (((int)b->size / 2 - (int)get_index(b->first, b->size - 1)) < 0)
 			rules_handling(a, b, "rrb", metrix);
 		else
 			rules_handling(a, b, "rb", metrix);
