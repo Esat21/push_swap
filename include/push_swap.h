@@ -50,43 +50,43 @@ typedef struct s_bench_metrics
 }				t_bench_metrics;
 
 
-t_node	*newnode(int value);
+t_node			*newnode(int value);
 
-t_stack	*init_stack(void);
+t_stack			*init_stack(void);
 
-t_stack	*create_stack_a(int argc, char **argv);
+t_stack			*create_stack_a(int argc, char **argv);
 
 t_bench_metrics	*bench_metrics_init(void);
 
-void	stack_add_front(t_stack *lst, t_node *new);
+void			stack_add_front(t_stack *lst, t_node *new);
 
-void	stack_add_back(t_stack *lst, t_node *new);
+void			stack_add_back(t_stack *lst, t_node *new);
 
-void	free_lst(t_node **lst);
+void			free_lst(t_node **lst);
 
-void	free_stacks(t_stack **a, t_stack **b);
+void			free_stacks(t_stack **a, t_stack **b);
 
-void	free_metrics(t_bench_metrics **metrix);
+void			free_metrics(t_bench_metrics **metrix);
 
-float	compute_disorder(t_stack *stack);
+float			compute_disorder(t_stack *stack);
 
-void	stack_normalisation(t_node *stack);
+void			stack_normalisation(t_node *stack);
 
-void	stack_swap(t_stack *lst);
+void			stack_swap(t_stack *lst);
 
-void	stack_push(t_stack *dest, t_stack *src);
+void			stack_push(t_stack *dest, t_stack *src);
 
-void	stack_rotate(t_stack *lst);
+void			stack_rotate(t_stack *lst);
 
-void	stack_rrotate(t_stack *lst);
+void			stack_rrotate(t_stack *lst);
 
 unsigned int	get_index(t_node *node, unsigned int val);
 
-void	selection_sort(t_stack *stack_a, t_stack *stack_b, t_bench_metrics *m);
+void			selection_sort(t_stack *stack_a, t_stack *stack_b, t_bench_metrics *m);
 
-void	chunk_sort(t_stack *a, t_stack *b, t_bench_metrics *metrix);
+void			chunk_sort(t_stack *a, t_stack *b, t_bench_metrics *metrix);
 
-void	rules_handling(
+void			rules_handling(
 	t_stack *a,
 	t_stack *b,
 	char *rule,
@@ -94,8 +94,8 @@ void	rules_handling(
 );
 
 // additional functions (not needed in proj)
-void	print_stack(t_stack *stack);
+void			print_stack(t_stack *stack);
 
-void	print_metrics(t_bench_metrics *metrics);
+void			print_metrics(t_bench_metrics *metrics); // needed for --bench flag
 
 #endif
