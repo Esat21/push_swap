@@ -25,7 +25,7 @@ int	main(int argc, char **argv)
 	metrics->disorder = compute_disorder(stack_a);
 	stack_normalisation(stack_a->first);
 	print_stack(stack_a);
-	selection_sort(stack_a, stack_b, metrics);
+	quick_sort_a(stack_a, stack_b, 0, stack_a->size - 1, metrics);
 	print_stack(stack_a);
 	printf("\n");
 	print_stack(stack_b);

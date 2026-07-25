@@ -86,6 +86,8 @@ void			selection_sort(t_stack *stack_a, t_stack *stack_b, t_bench_metrics *m);
 
 void			chunk_sort(t_stack *a, t_stack *b, t_bench_metrics *metrix);
 
+void			quick_sort_a(t_stack *a, t_stack *b, int min, int max, t_bench_metrics *m);
+
 void			rules_handling(
 	t_stack *a,
 	t_stack *b,

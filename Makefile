@@ -13,7 +13,8 @@ SRCS =	push_swap.c \
 		src/ps_rules.c \
 		src/stack_creation.c \
 		src/sorting_algorithms/simple_algorithm.c \
-		src/sorting_algorithms/medium_algorithm.c
+		src/sorting_algorithms/medium_algorithm.c \
+		src/sorting_algorithms/complex_algoritm.c
 
 OBJS = $(SRCS:.c=.o)
 

@@ -16,6 +16,8 @@ void	stack_swap(t_stack *lst)
 {
 	t_node	*buff;
 
+	if (!lst || !lst->first || !lst->first->next)
+		return ;
 	buff = lst->first->next;
 	lst->first->next = lst->first->next->next;
 	buff->next = lst->first;
@@ -26,18 +28,22 @@ void	stack_push(t_stack *dest, t_stack *src)
 {
 	t_node	*buff;
 
-	if (!src->first)
+	if (!dest || !src || !src->first)
 		return ;
 	buff = src->first->next;
 	stack_add_front(dest, src->first);
 	src->first = buff;
 	src->size--;
-	if (src->size == 1)
+	if (src->size == 0)
+		src->last = NULL;
+	else if (src->size == 1)
 		src->last = src->first;
 }
 
 void	stack_rotate(t_stack *lst)
 {
+	if (!lst || !lst->first || !lst->last || lst->size <= 1)
+		return ;
 	lst->last->next = lst->first;
 	lst->last = lst->first;
 	lst->first = lst->first->next;
@@ -48,7 +54,7 @@ void	stack_rrotate(t_stack *lst)
 {
 	t_node	*second_last;
 
-	if (lst->size <= 1)
+	if (!lst || !lst->first || !lst->last || lst->size <= 1)
 		return ;
 	second_last = lst->first;
 	while (second_last->next->next)
