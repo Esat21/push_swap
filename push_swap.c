@@ -17,20 +17,19 @@ int	main(int argc, char **argv)
 {
 	t_stack 		*stack_a;
 	t_stack			*stack_b;
-	t_bench_metrics	*metrics;
 
 	stack_a = create_stack_a(argc, argv);
 	stack_b = init_stack();
-	metrics = bench_metrics_init();
-	metrics->disorder = compute_disorder(stack_a);
+	stack_a->metrics = bench_metrics_init();
+	stack_b->metrics = stack_a->metrics;
+	stack_a->metrics->disorder = compute_disorder(stack_a);
 	stack_normalisation(stack_a->first);
 	print_stack(stack_a);
-	quick_sort_a(stack_a, stack_b, 0, stack_a->size - 1, metrics);
+	quick_sort_a(stack_a, stack_b, 0, stack_a->size - 1);
 	print_stack(stack_a);
 	printf("\n");
 	print_stack(stack_b);
-	print_metrics(metrics);
-	free_metrics(&metrics);
+	print_metrics(stack_a->metrics);
 	free_stacks(&stack_a, &stack_b);
 	return (0);
 }

@@ -49,7 +49,7 @@ static int	get_index_in_range(t_node *node, unsigned int range)
 	return (i);
 }
 
-void	chunk_sort(t_stack *a, t_stack *b, t_bench_metrics *metrix)
+void	chunk_sort(t_stack *a, t_stack *b)
 {
 	unsigned int	i;
 	int				j;
@@ -62,16 +62,16 @@ void	chunk_sort(t_stack *a, t_stack *b, t_bench_metrics *metrix)
 	{
 		if (a->first->normalised < (chunk_size * j))
 		{
-			rules_handling(a, b, "pb", metrix);
+			rules_handling(a, b, "pb");
 			i++;
 			if (b->first->normalised < ((chunk_size * j) - (chunk_size / 2)))
-				rules_handling(a, b, "rb", metrix);
+				rules_handling(a, b, "rb");
 			continue ;
 		}
 		if (((int)a->size / 2 - get_index_in_range(a->first, chunk_size * j)) < 0)
-			rules_handling(a, b, "rra", metrix);
+			rules_handling(a, b, "rra");
 		else
-			rules_handling(a, b, "ra", metrix);
+			rules_handling(a, b, "ra");
 		if (i == chunk_size * j)
 			j++;
 	}
@@ -79,12 +79,12 @@ void	chunk_sort(t_stack *a, t_stack *b, t_bench_metrics *metrix)
 	{
 		if (b->first && b->first->normalised == b->size - 1)
 		{
-			rules_handling(a, b, "pa", metrix);
+			rules_handling(a, b, "pa");
 			continue ;
 		}
 		if (((int)b->size / 2 - (int)get_index(b->first, b->size - 1)) < 0)
-			rules_handling(a, b, "rrb", metrix);
+			rules_handling(a, b, "rrb");
 		else
-			rules_handling(a, b, "rb", metrix);
+			rules_handling(a, b, "rb");
 	}
 }

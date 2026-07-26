@@ -18,6 +18,8 @@ void	stack_swap(t_stack *lst)
 
 	if (!lst || !lst->first || !lst->first->next)
 		return ;
+	if (lst->size == 2)
+		lst->last = lst->first;
 	buff = lst->first->next;
 	lst->first->next = lst->first->next->next;
 	buff->next = lst->first;

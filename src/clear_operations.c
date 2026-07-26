@@ -54,6 +54,8 @@ void	free_stacks(t_stack **a, t_stack **b)
 {
 	if (a && *a)
 	{
+		if ((*a)->metrics)
+			free_metrics(&(*a)->metrics);
 		free_lst(&((*a)->first));
 		(*a)->last = NULL;
 		free(*a);

@@ -24,13 +24,6 @@ typedef struct s_node
 	unsigned int	normalised;
 }			t_node;
 
-typedef struct s_stack
-{
-	t_node			*first;
-	t_node			*last;
-	unsigned int	size;
-}			t_stack;
-
 typedef struct s_bench_metrics
 {
 	int	operations;
@@ -49,6 +42,13 @@ typedef struct s_bench_metrics
 	float	disorder;
 }				t_bench_metrics;
 
+typedef struct s_stack
+{
+	t_node			*first;
+	t_node			*last;
+	unsigned int	size;
+	t_bench_metrics *metrics;
+}			t_stack;
 
 t_node			*newnode(int value);
 
@@ -82,18 +82,15 @@ void			stack_rrotate(t_stack *lst);
 
 unsigned int	get_index(t_node *node, unsigned int val);
 
-void			selection_sort(t_stack *stack_a, t_stack *stack_b, t_bench_metrics *m);
+void			selection_sort(t_stack *stack_a, t_stack *stack_b);
 
-void			chunk_sort(t_stack *a, t_stack *b, t_bench_metrics *metrix);
+void			chunk_sort(t_stack *a, t_stack *b);
 
-void			quick_sort_a(t_stack *a, t_stack *b, int min, int max, t_bench_metrics *m);
+void			quick_sort_a(t_stack *a, t_stack *b, int min, int max);
 
-void			rules_handling(
-	t_stack *a,
-	t_stack *b,
-	char *rule,
-	t_bench_metrics *metrics
-);
+void			rules_handling(t_stack *a, t_stack *b, char *rule);
+
+void			handle_small_a(t_stack *a, t_stack *b, int size);
 
 // additional functions (not needed in proj)
 void			print_stack(t_stack *stack);
