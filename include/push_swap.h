@@ -50,6 +50,15 @@ typedef struct s_stack
 	t_bench_metrics *metrics;
 }			t_stack;
 
+typedef struct s_qsp
+{
+	unsigned int	pivot;
+	unsigned int	pushed;
+	int				rotated;
+	int				size;
+}				t_qsp;
+
+
 t_node			*newnode(int value);
 
 t_stack			*init_stack(void);
@@ -87,6 +96,14 @@ void			selection_sort(t_stack *stack_a, t_stack *stack_b);
 void			chunk_sort(t_stack *a, t_stack *b);
 
 void			quick_sort_a(t_stack *a, t_stack *b, int min, int max);
+
+void			push_below_pivot(t_stack *a, t_stack *b, t_qsp *qsp);
+
+void			push_above_pivot(t_stack *a, t_stack *b, t_qsp *qsp);
+
+void			bring_a_to_beginning(t_stack *a, t_stack *b, t_qsp *qsp);
+
+void			bring_b_to_beginning(t_stack *a, t_stack *b, t_qsp *qsp);
 
 void			rules_handling(t_stack *a, t_stack *b, char *rule);
 

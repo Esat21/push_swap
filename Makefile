@@ -14,7 +14,8 @@ SRCS =	push_swap.c \
 		src/stack_creation.c \
 		src/sorting_algorithms/simple_algorithm.c \
 		src/sorting_algorithms/medium_algorithm.c \
-		src/sorting_algorithms/complex_algoritm.c
+		src/sorting_algorithms/complex_algorithm.c \
+		src/sorting_algorithms/complex_algorithm_utils.c
 
 OBJS = $(SRCS:.c=.o)
 

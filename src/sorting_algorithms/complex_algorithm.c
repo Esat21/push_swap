@@ -45,92 +45,38 @@ void handle_small_b(t_stack *a, t_stack *b, int size)
 
 void	quick_sort_a(t_stack *a, t_stack *b, int min, int max)
 {
-	unsigned int	pivot;
-	int	rotated;
-	int	size;
-	int	i;
-	unsigned int	pushed;
+	t_qsp	qsp;
 
-	pushed = min;
-	size = max - min + 1;
-	if (size <= 2)
+	qsp.pushed = min;
+	qsp.size = max - min + 1;
+	if (qsp.size <= 2)
 	{
-		handle_small_a(a, b, size);
+		handle_small_a(a, b, qsp.size);
 		return ;
 	}
-	pivot = min + (size / 2);
-	rotated = 0;
-	i = 0;
-	while (i++ < size && a->first && pushed < pivot)
-	{
-		if (a->first->normalised < pivot)
-		{
-			rules_handling(a, b, "pb");
-			pushed++;
-		}
-		else
-		{
-			rules_handling(a, b, "ra");
-			rotated++;
-		}
-	}
-	i = 0;
-	if ((int)a->size / 2 - rotated > 0)
-	{
-		while (i++ < rotated)
-			rules_handling(a, b, "rra");
-	}
-	else 
-	{
-		while ((unsigned int)i++ < (a->size - rotated + 1))
-			rules_handling(a, b, "ra");
-	}
-	quick_sort_a(a, b, pivot, max);
-	quick_sort_b(a, b, min, pivot - 1);
+	qsp.pivot = min + (qsp.size / 2);
+	qsp.rotated = 0;
+	push_below_pivot(a, b, &qsp);
+	bring_a_to_beginning(a, b, &qsp);
+	quick_sort_a(a, b, qsp.pivot, max);
+	quick_sort_b(a, b, min, qsp.pivot - 1);
 }
 
 void	quick_sort_b(t_stack *a, t_stack *b, int min, int max)
 {
-	unsigned int	pivot;
-	int	rotated;
-	int	size;
-	int	i;
-	unsigned int	pushed;
+	t_qsp	qsp;
 
-	pushed = min;
-	size = max - min + 1;
-	if (size <= 2)
+	qsp.pushed = min;
+	qsp.size = max - min + 1;
+	if (qsp.size <= 2)
 	{
-		handle_small_b(a, b, size);
+		handle_small_b(a, b, qsp.size);
 		return ;
 	}
-	pivot = min + (size / 2);
-	rotated = 0;
-	i = 0;
-	while (i++ < size && b->first && pushed <= pivot)
-	{
-		if (b->first->normalised >= pivot)
-		{
-			rules_handling(a, b, "pa");
-			pushed++;
-		}
-		else
-		{
-			rules_handling(a, b, "rb");
-			rotated++;
-		}
-	}
-	i = 0;
-	if ((int)b->size / 2 - rotated > 0)
-	{
-		while (i++ < rotated)
-			rules_handling(a, b, "rrb");
-	}
-	else 
-	{
-		while ((unsigned int)i++ < (b->size - rotated + 1))
-			rules_handling(a, b, "rb");
-	}
-	quick_sort_a(a, b, pivot, max);
-	quick_sort_b(a, b, min, pivot - 1);
+	qsp.pivot = min + (qsp.size / 2);
+	qsp.rotated = 0;
+	push_above_pivot(a, b, &qsp);
+	bring_b_to_beginning(a, b, &qsp);
+	quick_sort_a(a, b, qsp.pivot, max);
+	quick_sort_b(a, b, min, qsp.pivot - 1);
 }
