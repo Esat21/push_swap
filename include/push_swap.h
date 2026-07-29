@@ -26,7 +26,7 @@ typedef struct s_node
 
 typedef struct s_bench_metrics
 {
-	int	operations;
+	int		operations;
 	int		sa;
 	int		sb;
 	int		ss;
@@ -47,7 +47,7 @@ typedef struct s_stack
 	t_node			*first;
 	t_node			*last;
 	unsigned int	size;
-	t_bench_metrics *metrics;
+	t_bench_metrics	*metrics;
 }			t_stack;
 
 typedef struct s_qsp
@@ -58,6 +58,14 @@ typedef struct s_qsp
 	int				size;
 }				t_qsp;
 
+typedef struct s_flags
+{
+	int	is_flag;
+	int	is_simple;
+	int	is_medium;
+	int	is_complex;
+	int	is_adaptive;
+}				t_flags;
 
 t_node			*newnode(int value);
 
@@ -112,6 +120,6 @@ void			handle_small_a(t_stack *a, t_stack *b, int size);
 // additional functions (not needed in proj)
 void			print_stack(t_stack *stack);
 
-void			print_metrics(t_bench_metrics *metrics); // needed for --bench flag
+void			print_metrics(t_bench_metrics *metrics);
 
 #endif

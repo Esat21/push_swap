@@ -10,12 +10,12 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./include/push_swap.h"
+#include "push_swap.h"
 #include <stdio.h>
 
 int	main(int argc, char **argv)
 {
-	t_stack 		*stack_a;
+	t_stack			*stack_a;
 	t_stack			*stack_b;
 
 	stack_a = create_stack_a(argc, argv);
@@ -25,7 +25,7 @@ int	main(int argc, char **argv)
 	stack_a->metrics->disorder = compute_disorder(stack_a);
 	stack_normalisation(stack_a->first);
 	print_stack(stack_a);
-	quick_sort_a(stack_a, stack_b, 0, stack_a->size - 1);
+	chunk_sort(stack_a, stack_b);
 	print_stack(stack_a);
 	printf("\n");
 	print_stack(stack_b);

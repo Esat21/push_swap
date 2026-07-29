@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/push_swap.h"
+#include "push_swap.h"
 
 void	push_below_pivot(t_stack *a, t_stack *b, t_qsp *qsp)
 {
@@ -62,7 +62,7 @@ void	bring_a_to_beginning(t_stack *a, t_stack *b, t_qsp *qsp)
 		while (i++ < qsp->rotated)
 			rules_handling(a, b, "rra");
 	}
-	else 
+	else
 	{
 		while ((unsigned int)i++ < (a->size - qsp->rotated))
 			rules_handling(a, b, "ra");
@@ -79,7 +79,7 @@ void	bring_b_to_beginning(t_stack *a, t_stack *b, t_qsp *qsp)
 		while (i++ < qsp->rotated)
 			rules_handling(a, b, "rrb");
 	}
-	else 
+	else
 	{
 		while ((unsigned int)i++ < (b->size - qsp->rotated))
 			rules_handling(a, b, "rb");

@@ -10,9 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/push_swap.h"
+#include "push_swap.h"
 
-int		ft_sqrt(int n)
+static int	ft_sqrt(int n)
 {
 	int	i;
 
@@ -49,15 +49,14 @@ static int	get_index_in_range(t_node *node, unsigned int range)
 	return (i);
 }
 
-void	chunk_sort(t_stack *a, t_stack *b)
+void	sort_chunks(t_stack *a, t_stack *b, unsigned int chunk_size)
 {
 	unsigned int	i;
 	int				j;
-	unsigned int	chunk_size;
+	int				closest;
 
 	i = 0;
 	j = 1;
-	chunk_size = ft_sqrt(a->size) * 2;
 	while (a->size > 0)
 	{
 		if (a->first->normalised < (chunk_size * j))
@@ -68,13 +67,22 @@ void	chunk_sort(t_stack *a, t_stack *b)
 				rules_handling(a, b, "rb");
 			continue ;
 		}
-		if (((int)a->size / 2 - get_index_in_range(a->first, chunk_size * j)) < 0)
+		closest = get_index_in_range(a->first, chunk_size * j);
+		if (((int)a->size / 2 - closest) < 0)
 			rules_handling(a, b, "rra");
 		else
 			rules_handling(a, b, "ra");
 		if (i == chunk_size * j)
 			j++;
 	}
+}
+
+void	chunk_sort(t_stack *a, t_stack *b)
+{
+	unsigned int	chunk_size;
+
+	chunk_size = ft_sqrt(a->size) * 2;
+	sort_chunks(a, b, chunk_size);
 	while (b->size > 0)
 	{
 		if (b->first && b->first->normalised == b->size - 1)

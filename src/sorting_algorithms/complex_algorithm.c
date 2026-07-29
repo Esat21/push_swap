@@ -10,37 +10,37 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/push_swap.h"
+#include "push_swap.h"
 
 void	quick_sort_b(t_stack *a, t_stack *b, int min, int max);
 
 void	handle_small_a(t_stack *a, t_stack *b, int size)
 {
-    if (size <= 1)
-        return ;
-    if (size == 2)
-    {
-        if (a->first->normalised > a->first->next->normalised)
-            rules_handling(a, b, "sa");
-        return ;
-    }
+	if (size <= 1)
+		return ;
+	if (size == 2)
+	{
+		if (a->first->normalised > a->first->next->normalised)
+			rules_handling(a, b, "sa");
+		return ;
+	}
 }
 
-void handle_small_b(t_stack *a, t_stack *b, int size)
+void	handle_small_b(t_stack *a, t_stack *b, int size)
 {
-    if (size == 1)
-    {
-        rules_handling(a, b, "pa");
-        return ;
-    }
-    if (size == 2)
-    {
-        if (b->first->normalised < b->first->next->normalised)
-            rules_handling(a, b, "sb");
-        rules_handling(a, b, "pa");
-        rules_handling(a, b, "pa");
-        return ;
-    }
+	if (size == 1)
+	{
+		rules_handling(a, b, "pa");
+		return ;
+	}
+	if (size == 2)
+	{
+		if (b->first->normalised < b->first->next->normalised)
+			rules_handling(a, b, "sb");
+		rules_handling(a, b, "pa");
+		rules_handling(a, b, "pa");
+		return ;
+	}
 }
 
 void	quick_sort_a(t_stack *a, t_stack *b, int min, int max)

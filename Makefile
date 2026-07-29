@@ -1,5 +1,5 @@
 CC = cc
-CFLAGS = -Wall -Werror -Wextra
+CFLAGS = -Wall -Werror -Wextra -I ./include/
 
 NAME = push_swap
 
@@ -23,7 +23,7 @@ all: $(NAME)
 
 $(NAME): $(OBJS)
 	make -C ./libft
-	$(CC) $(CFLAGS) $^ -o $@ ./libft/*.o
+	$(CC) $(CFLAGS) $^ -o $@ ./libft/libft.a
 
 %.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
