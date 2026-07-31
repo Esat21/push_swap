@@ -30,6 +30,7 @@ void	selection_sort(t_stack *stack_a, t_stack *stack_b)
 	unsigned int	i;
 
 	i = 0;
+	stack_a->metrics->algorithm = ft_strdup("O(n²)");
 	while (stack_a->size > 2)
 	{
 		if (stack_a->first && stack_a->first->normalised == i)

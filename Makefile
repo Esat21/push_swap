@@ -12,6 +12,9 @@ SRCS =	push_swap.c \
 		src/ps_rules_handling.c \
 		src/ps_rules.c \
 		src/stack_creation.c \
+		src/flags_check.c \
+		src/input_check.c \
+		src/flattern_args.c \
 		src/sorting_algorithms/simple_algorithm.c \
 		src/sorting_algorithms/medium_algorithm.c \
 		src/sorting_algorithms/complex_algorithm.c \

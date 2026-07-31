@@ -41,9 +41,13 @@ t_stack	*create_stack_a(int argc, char **argv)
 	t_stack	*stack_a;
 
 	stack_a = init_stack();
-	i = 0;
+	i = -1;
 	while (++i < argc)
+	{
+		if (is_flag(argv[i]))
+			continue;
 		stack_add_back(stack_a, newnode(ft_atoi(argv[i])));
+	}
 	return (stack_a);
 }
 

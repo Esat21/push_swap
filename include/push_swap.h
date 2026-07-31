@@ -39,6 +39,7 @@ typedef struct s_bench_metrics
 	int		rrb;
 	int		rrr;
 	char	*strategy;
+	char	*algorithm;
 	float	disorder;
 }				t_bench_metrics;
 
@@ -60,11 +61,11 @@ typedef struct s_qsp
 
 typedef struct s_flags
 {
-	int	is_flag;
 	int	is_simple;
 	int	is_medium;
 	int	is_complex;
 	int	is_adaptive;
+	int	is_bench;
 }				t_flags;
 
 t_node			*newnode(int value);
@@ -116,6 +117,14 @@ void			bring_b_to_beginning(t_stack *a, t_stack *b, t_qsp *qsp);
 void			rules_handling(t_stack *a, t_stack *b, char *rule);
 
 void			handle_small_a(t_stack *a, t_stack *b, int size);
+
+int				is_flag(char *s);
+
+char			**flatten_args(int argc, char **argv, int *total_nums);
+
+void			free_split(char **split);
+
+int				input_check(int argc, char **argv);
 
 // additional functions (not needed in proj)
 void			print_stack(t_stack *stack);

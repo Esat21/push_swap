@@ -81,6 +81,7 @@ void	chunk_sort(t_stack *a, t_stack *b)
 {
 	unsigned int	chunk_size;
 
+	a->metrics->algorithm = ft_strdup("O(n√n)");
 	chunk_size = ft_sqrt(a->size) * 2;
 	sort_chunks(a, b, chunk_size);
 	while (b->size > 0)

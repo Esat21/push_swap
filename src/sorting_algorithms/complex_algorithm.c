@@ -66,6 +66,7 @@ void	quick_sort_b(t_stack *a, t_stack *b, int min, int max)
 {
 	t_qsp	qsp;
 
+	a->metrics->algorithm = ft_strdup("O(n log n)");
 	qsp.pushed = min;
 	qsp.size = max - min + 1;
 	if (qsp.size <= 2)

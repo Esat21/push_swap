@@ -12,18 +12,53 @@
 
 #include "push_swap.h"
 
-int	is_flag(char *s)
+int		is_flag(char *s)
 {
-	int	is_flag;
+	const char	*flags[] = {
+		"--simple", "--medium", "--complex", "--adaptive", "--bench"
+	};
+	int			i;
 
-	is_flag = 0;
-	if (!ft_strncmp(s, "--simple", 9))
-		is_flag = 1;
-	else if (!ft_strncmp(s, "--medium", 9))
-		is_flag = 1;
-	else if (!ft_strncmp(s, "--complex", 10))
-		is_flag = 1;
-	else if (!ft_strncmp(s, "--adaptive", 11))
-		is_flag = 1;
-	return (is_flag);
+	i = -1;
+	while (++i < 5)
+	{
+		if (!ft_strncmp(flags[i], s, ft_strlen(flags[i]) + 1))
+			return (1);
+	}
+	return (0);
+}
+
+void	init_flags(t_flags *flags)
+{
+	flags->is_simple = 0;
+	flags->is_medium = 0;
+	flags->is_complex = 0;
+	flags->is_adaptive = 0;
+	flags->is_bench = 0;
+}
+
+void	set_flag(char *s, t_flags *flags)
+{
+	if (!ft_strncmp("--simple", s, 9))
+		flags->is_simple = 1;
+	else if (!ft_strncmp("--medium", s, 9))
+		flags->is_medium = 1;
+	else if (!ft_strncmp("--complex", s, 10))
+		flags->is_complex = 1;
+	else if (!ft_strncmp("--adaptive", s, 11))
+		flags->is_adaptive = 1;
+	else if (!ft_strncmp("--bench", s, 8))
+		flags->is_bench = 1;
+}
+
+void	find_flags(int argc, char **argv, t_flags *flags)
+{
+	int	i;
+
+	i = 0;
+	while (++i < argc)
+	{
+		if (is_flag(argv[i]))
+			set_flag(argv[i], flags);
+	}
 }

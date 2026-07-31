@@ -46,5 +46,7 @@ float	compute_disorder(t_stack *stack)
 		}
 		i = i->next;
 	}
+	if (!total_pairs)
+		return (0);
 	return (mistakes / total_pairs);
 }
