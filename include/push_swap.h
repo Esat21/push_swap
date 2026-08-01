@@ -38,9 +38,10 @@ typedef struct s_bench_metrics
 	int		rra;
 	int		rrb;
 	int		rrr;
+	float	disorder;
 	char	*strategy;
 	char	*algorithm;
-	float	disorder;
+	char	*rules;
 }				t_bench_metrics;
 
 typedef struct s_stack
@@ -125,6 +126,8 @@ char			**flatten_args(int argc, char **argv, int *total_nums);
 void			free_split(char **split);
 
 int				input_check(int argc, char **argv);
+
+char			*ft_strjoin_wnl(char const *s1, char const *s2);
 
 // additional functions (not needed in proj)
 void			print_stack(t_stack *stack);

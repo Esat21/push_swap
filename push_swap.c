@@ -30,6 +30,7 @@ int	main(int argc, char **argv)
 		stack_normalisation(stack_a->first);
 		print_stack(stack_a);
 		selection_sort(stack_a, stack_b);
+		printf("%s", stack_a->metrics->rules);
 		print_stack(stack_a);
 		printf("\n");
 		print_stack(stack_b);

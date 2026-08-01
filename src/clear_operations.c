@@ -73,6 +73,7 @@ void	free_stacks(t_stack **a, t_stack **b)
 void	free_metrics(t_bench_metrics **metrix)
 {
 	// free((*metrix)->strategy);
+	free((*metrix)->rules);
 	free((*metrix)->algorithm);
 	free(*metrix);
 	*metrix = NULL;

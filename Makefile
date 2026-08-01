@@ -4,6 +4,7 @@ CFLAGS = -Wall -Werror -Wextra -I ./include/
 NAME = push_swap
 
 SRCS =	push_swap.c \
+		src/utils.c \
 		src/additional_functions.c \
 		src/clear_operations.c \
 		src/disorder_metric.c \

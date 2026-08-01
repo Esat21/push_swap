@@ -72,5 +72,6 @@ t_bench_metrics	*bench_metrics_init(void)
 	metrics->rrr = 0;
 	metrics->disorder = 0;
 	metrics->strategy = NULL;
+	metrics->rules = ft_strdup("");
 	return (metrics);
 }
