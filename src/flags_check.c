@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-int		is_flag(char *s)
+int	is_flag(char *s)
 {
 	const char	*flags[] = {
 		"--simple", "--medium", "--complex", "--adaptive", "--bench"
@@ -26,15 +26,6 @@ int		is_flag(char *s)
 			return (1);
 	}
 	return (0);
-}
-
-void	init_flags(t_flags *flags)
-{
-	flags->is_simple = 0;
-	flags->is_medium = 0;
-	flags->is_complex = 0;
-	flags->is_adaptive = 0;
-	flags->is_bench = 0;
 }
 
 void	set_flag(char *s, t_flags *flags)
@@ -55,7 +46,7 @@ void	find_flags(int argc, char **argv, t_flags *flags)
 {
 	int	i;
 
-	i = 0;
+	i = -1;
 	while (++i < argc)
 	{
 		if (is_flag(argv[i]))

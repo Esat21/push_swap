@@ -25,7 +25,7 @@ void	free_split(char **split)
 	}
 }
 
-static int count_tokens(int argc, char **argv)
+static int	count_tokens(int argc, char **argv)
 {
 	int		i;
 	int		count;
@@ -36,8 +36,6 @@ static int count_tokens(int argc, char **argv)
 	count = 0;
 	while (++i < argc)
 	{
-		// if (is_flag(argv[i]))
-		// 	continue ;
 		split = ft_split(argv[i], ' ');
 		if (!split)
 			return (0);

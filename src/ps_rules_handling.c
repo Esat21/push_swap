@@ -22,7 +22,7 @@ static void	handler_1(t_stack *a, t_stack *b, char *rule)
 	else if (ft_strncmp("sb", rule, 3) == 0)
 	{
 		stack_swap(b);
-		b->metrics->sb++;
+		a->metrics->sb++;
 	}
 	else if (ft_strncmp("pa", rule, 3) == 0)
 	{
@@ -32,7 +32,7 @@ static void	handler_1(t_stack *a, t_stack *b, char *rule)
 	else if (ft_strncmp("pb", rule, 3) == 0)
 	{
 		stack_push(b, a);
-		b->metrics->pb++;
+		a->metrics->pb++;
 	}
 	else if (ft_strncmp("ra", rule, 3) == 0)
 	{
@@ -84,13 +84,9 @@ static void	handler_3(t_stack *a, t_stack *b, char *rule)
 
 void	rules_handling(t_stack *a, t_stack *b, char *rule)
 {
-	char *buff;
-
 	handler_1(a, b, rule);
 	handler_2(a, b, rule);
 	handler_3(a, b, rule);
-	buff = ft_strjoin_wnl(a->metrics->rules, rule);
-	free(a->metrics->rules);
-	a->metrics->rules = buff;
+	ft_putendl_fd(rule, 1);
 	a->metrics->operations++;
 }

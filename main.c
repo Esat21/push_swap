@@ -24,16 +24,10 @@ int	main(int argc, char **argv)
 	{
 		stack_a = create_stack_a(total_args, flatened_argc);
 		stack_b = init_stack();
-		stack_a->metrics = bench_metrics_init();
-		stack_b->metrics = stack_a->metrics;
-		stack_a->metrics->disorder = compute_disorder(stack_a);
-		stack_normalisation(stack_a->first);
+		find_flags(total_args, flatened_argc, stack_a->flags);
 		print_stack(stack_a);
-		selection_sort(stack_a, stack_b);
-		printf("%s", stack_a->metrics->rules);
+		push_swap(stack_a, stack_b);
 		print_stack(stack_a);
-		printf("\n");
-		print_stack(stack_b);
 		print_metrics(stack_a->metrics);
 		free_stacks(&stack_a, &stack_b);
 	}

@@ -29,6 +29,7 @@ static int	get_index_in_range(t_node *node, unsigned int range)
 	int	last_occurrence;
 
 	i = 0;
+	last_occurrence = 0;
 	if (!node)
 		return (-1);
 	while (node && node->normalised > range - 1)

@@ -1,9 +1,10 @@
 CC = cc
-CFLAGS = -Wall -Werror -Wextra -I ./include/
+CFLAGS = -Wall -Werror -Wextra -I ./include/ -I ./libft/
 
 NAME = push_swap
 
-SRCS =	push_swap.c \
+SRCS =	main.c \
+		src/push_swap.c \
 		src/utils.c \
 		src/additional_functions.c \
 		src/clear_operations.c \
@@ -19,7 +20,8 @@ SRCS =	push_swap.c \
 		src/sorting_algorithms/simple_algorithm.c \
 		src/sorting_algorithms/medium_algorithm.c \
 		src/sorting_algorithms/complex_algorithm.c \
-		src/sorting_algorithms/complex_algorithm_utils.c
+		src/sorting_algorithms/complex_algorithm_utils.c \
+		src/sorting_algorithms/adaptive_algorithm.c
 
 OBJS = $(SRCS:.c=.o)
 

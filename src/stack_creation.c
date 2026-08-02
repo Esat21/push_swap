@@ -32,7 +32,24 @@ t_stack	*init_stack(void)
 	lst->first = NULL;
 	lst->last = NULL;
 	lst->size = 0;
+	lst->flags = NULL;
+	lst->metrics = NULL;
 	return (lst);
+}
+
+t_flags	*init_flags(void)
+{
+	t_flags	*flags;
+
+	flags = (t_flags *)malloc(sizeof(t_flags));
+	if (!flags)
+		return (NULL);
+	flags->is_adaptive = 1;
+	flags->is_simple = 0;
+	flags->is_medium = 0;
+	flags->is_complex = 0;
+	flags->is_bench = 0;
+	return (flags);
 }
 
 t_stack	*create_stack_a(int argc, char **argv)
@@ -41,11 +58,13 @@ t_stack	*create_stack_a(int argc, char **argv)
 	t_stack	*stack_a;
 
 	stack_a = init_stack();
+	stack_a->flags = init_flags();
+	stack_a->metrics = bench_metrics_init();
 	i = -1;
 	while (++i < argc)
 	{
 		if (is_flag(argv[i]))
-			continue;
+			continue ;
 		stack_add_back(stack_a, newnode(ft_atoi(argv[i])));
 	}
 	return (stack_a);
@@ -72,6 +91,5 @@ t_bench_metrics	*bench_metrics_init(void)
 	metrics->rrr = 0;
 	metrics->disorder = 0;
 	metrics->strategy = NULL;
-	metrics->rules = ft_strdup("");
 	return (metrics);
 }

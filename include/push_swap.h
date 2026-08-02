@@ -14,7 +14,7 @@
 # define PUSH_SWAP_H
 
 # include <stdlib.h>
-# include "../libft/libft.h"
+# include "libft.h"
 # include <stdio.h>
 
 typedef struct s_node
@@ -41,24 +41,7 @@ typedef struct s_bench_metrics
 	float	disorder;
 	char	*strategy;
 	char	*algorithm;
-	char	*rules;
 }				t_bench_metrics;
-
-typedef struct s_stack
-{
-	t_node			*first;
-	t_node			*last;
-	unsigned int	size;
-	t_bench_metrics	*metrics;
-}			t_stack;
-
-typedef struct s_qsp
-{
-	unsigned int	pivot;
-	unsigned int	pushed;
-	int				rotated;
-	int				size;
-}				t_qsp;
 
 typedef struct s_flags
 {
@@ -68,6 +51,23 @@ typedef struct s_flags
 	int	is_adaptive;
 	int	is_bench;
 }				t_flags;
+
+typedef struct s_stack
+{
+	t_node			*first;
+	t_node			*last;
+	unsigned int	size;
+	t_bench_metrics	*metrics;
+	t_flags			*flags;
+}			t_stack;
+
+typedef struct s_qsp
+{
+	unsigned int	pivot;
+	unsigned int	pushed;
+	int				rotated;
+	int				size;
+}				t_qsp;
 
 t_node			*newnode(int value);
 
@@ -105,7 +105,9 @@ void			selection_sort(t_stack *stack_a, t_stack *stack_b);
 
 void			chunk_sort(t_stack *a, t_stack *b);
 
-void			quick_sort_a(t_stack *a, t_stack *b, int min, int max);
+void			quick_sort(t_stack *a, t_stack *b);
+
+void			adaptive_algorithm(t_stack *a, t_stack *b);
 
 void			push_below_pivot(t_stack *a, t_stack *b, t_qsp *qsp);
 
@@ -127,7 +129,9 @@ void			free_split(char **split);
 
 int				input_check(int argc, char **argv);
 
-char			*ft_strjoin_wnl(char const *s1, char const *s2);
+void			find_flags(int argc, char **argv, t_flags *flags);
+
+void			push_swap(t_stack *a, t_stack *b);
 
 // additional functions (not needed in proj)
 void			print_stack(t_stack *stack);
