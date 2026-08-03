@@ -12,9 +12,9 @@
 
 #include "push_swap.h"
 
-unsigned int	get_index(t_node *node, unsigned int val)
+int	get_index(t_node *node, unsigned int val)
 {
-	unsigned int	i;
+	int	i;
 
 	i = 0;
 	while (node && node->normalised != val)
@@ -28,6 +28,7 @@ unsigned int	get_index(t_node *node, unsigned int val)
 void	selection_sort(t_stack *stack_a, t_stack *stack_b)
 {
 	unsigned int	i;
+	int				target;
 
 	i = 0;
 	stack_a->metrics->algorithm = ft_strdup("O(n²)");
@@ -39,10 +40,11 @@ void	selection_sort(t_stack *stack_a, t_stack *stack_b)
 			i++;
 			continue ;
 		}
-		if (((int)stack_a->size / 2 - (int)get_index(stack_a->first, i)) < 0)
-			rules_handling(stack_a, stack_b, "rra");
+		target = get_index(stack_a->first, i);
+		if (((int)stack_a->size / 2 - target) < 0)
+			rotate_n_times(stack_a, stack_b, stack_a->size - target, "rra");
 		else
-			rules_handling(stack_a, stack_b, "ra");
+			rotate_n_times(stack_a, stack_b, target, "ra");
 	}
 	handle_small_a(stack_a, stack_b, stack_a->size);
 	while (stack_b->size > 0)

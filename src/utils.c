@@ -11,3 +11,12 @@
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+void	rotate_n_times(t_stack *a, t_stack *b, int n, char *rule)
+{
+	int	i;
+
+	i = 0;
+	while (i++ < n)
+		rules_handling(a, b, rule);
+}

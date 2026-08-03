@@ -81,9 +81,12 @@ void	sort_chunks(t_stack *a, t_stack *b, unsigned int chunk_size)
 void	chunk_sort(t_stack *a, t_stack *b)
 {
 	unsigned int	chunk_size;
+	int				target;
 
 	a->metrics->algorithm = ft_strdup("O(n√n)");
-	chunk_size = ft_sqrt(a->size) * 2;
+	chunk_size = 5;
+	if (a->size > 5)
+		chunk_size = ft_sqrt(a->size) * 2;
 	sort_chunks(a, b, chunk_size);
 	while (b->size > 0)
 	{
@@ -92,9 +95,10 @@ void	chunk_sort(t_stack *a, t_stack *b)
 			rules_handling(a, b, "pa");
 			continue ;
 		}
-		if (((int)b->size / 2 - (int)get_index(b->first, b->size - 1)) < 0)
-			rules_handling(a, b, "rrb");
+		target = get_index(b->first, b->size - 1);
+		if (((int)b->size / 2 - target) < 0)
+			rotate_n_times(a, b, b->size - target, "rrb");
 		else
-			rules_handling(a, b, "rb");
+			rotate_n_times(a, b, target, "rb");
 	}
 }

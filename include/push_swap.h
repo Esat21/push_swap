@@ -99,7 +99,7 @@ void			stack_rotate(t_stack *lst);
 
 void			stack_rrotate(t_stack *lst);
 
-unsigned int	get_index(t_node *node, unsigned int val);
+int				get_index(t_node *node, unsigned int val);
 
 void			selection_sort(t_stack *stack_a, t_stack *stack_b);
 
@@ -132,6 +132,8 @@ int				input_check(int argc, char **argv);
 void			find_flags(int argc, char **argv, t_flags *flags);
 
 void			push_swap(t_stack *a, t_stack *b);
+
+void			rotate_n_times(t_stack *a, t_stack *b, int n, char *rule);
 
 // additional functions (not needed in proj)
 void			print_stack(t_stack *stack);
