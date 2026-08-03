@@ -123,7 +123,7 @@ void			handle_small_a(t_stack *a, t_stack *b, int size);
 
 int				is_flag(char *s);
 
-char			**flatten_args(int argc, char **argv, int *total_nums);
+char			**flatten_args(int argc, char **argv, int *total_nums, char c);
 
 void			free_split(char **split);
 

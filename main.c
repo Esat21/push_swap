@@ -19,7 +19,7 @@ int	main(int argc, char **argv)
 	char	**flatened_argc;
 	int		total_args;
 
-	flatened_argc = flatten_args(argc, argv, &total_args);
+	flatened_argc = flatten_args(argc, argv, &total_args, ' ');
 	if (input_check(total_args, flatened_argc))
 	{
 		stack_a = create_stack_a(total_args, flatened_argc);
