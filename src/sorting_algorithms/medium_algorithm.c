@@ -64,12 +64,13 @@ void	sort_chunks(t_stack *a, t_stack *b, unsigned int chunk_size)
 		{
 			rules_handling(a, b, "pb");
 			i++;
-			if (b->first->normalised < ((chunk_size * j) - (chunk_size / 2)))
+			if (b->first->normalised < ((chunk_size * j) - (chunk_size / 2))
+				&& b->size != 1 && chunk_size != 5)
 				rules_handling(a, b, "rb");
 			continue ;
 		}
 		closest = get_index_in_range(a->first, chunk_size * j);
-		if (((int)a->size / 2 - closest) < 0)
+		if (((int)a->size / 2 - closest) < 0 && a->size != 1)
 			rules_handling(a, b, "rra");
 		else
 			rules_handling(a, b, "ra");
