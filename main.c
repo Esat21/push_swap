@@ -25,7 +25,11 @@ int	main(int argc, char **argv)
 	{
 		stack_a = create_stack_a(total_args, flatened_argv);
 		stack_b = init_stack();
-		find_flags(total_args, flatened_argv, stack_a->flags);
+		if (!find_flags(total_args, flatened_argv, stack_a->flags))
+		{
+			ft_putendl_fd("Error", 2);
+			return (0);
+		}
 		push_swap(stack_a, stack_b);
 		if (stack_a->flags->is_bench)
 			print_bench(stack_a->metrics);

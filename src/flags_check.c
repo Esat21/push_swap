@@ -30,21 +30,22 @@ int	is_flag(char *s)
 
 void	set_flag(char *s, t_flags *flags)
 {
-	if (!ft_strncmp("--simple", s, 9))
-		flags->is_simple = 1;
+	if (!ft_strncmp("--adaptive", s, 11))
+		flags->is_adaptive = 1;
 	else if (!ft_strncmp("--medium", s, 9))
 		flags->is_medium = 1;
 	else if (!ft_strncmp("--complex", s, 10))
 		flags->is_complex = 1;
-	else if (!ft_strncmp("--adaptive", s, 11))
-		flags->is_adaptive = 1;
+	else if (!ft_strncmp("--simple", s, 9))
+		flags->is_simple = 1;
 	else if (!ft_strncmp("--bench", s, 8))
 		flags->is_bench = 1;
 }
 
-void	find_flags(int argc, char **argv, t_flags *flags)
+int	find_flags(int argc, char **argv, t_flags *flags)
 {
 	int	i;
+	int	t;
 
 	i = -1;
 	while (++i < argc)
@@ -52,4 +53,8 @@ void	find_flags(int argc, char **argv, t_flags *flags)
 		if (is_flag(argv[i]))
 			set_flag(argv[i], flags);
 	}
+	t = flags->is_adaptive + flags->is_simple + flags->is_medium + flags->is_complex;
+	if (t > 1)
+		return (0);
+	return (1);
 }

@@ -132,7 +132,7 @@ long			ft_atol(const char *nptr);
 
 int				input_check(int argc, char **argv);
 
-void			find_flags(int argc, char **argv, t_flags *flags);
+int				find_flags(int argc, char **argv, t_flags *flags);
 
 void			push_swap(t_stack *a, t_stack *b);
 
