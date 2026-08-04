@@ -27,6 +27,7 @@ These fixes will save at least 2 moves. Currently getting 16 for most tests.
 
 # TO DO
 - Multiple flags are accepted, e.g. ./push_swap 2 1 3 4 5 --medium --simple --complex runs on simple and doesn't give any errors.
+- Need to handle already sorted input, currently, we are still doing actions.
 
 # 16/07/2026
 - Added int	stack_size(t_stack *lst) to get size of the stack (number of numbers). To be used for implementation in e.g. disorder_metric.

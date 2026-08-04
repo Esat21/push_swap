@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "push_swap.h"
+#include "bonus/bonus.h"
 
 int	main(int argc, char **argv)
 {
@@ -31,5 +32,9 @@ int	main(int argc, char **argv)
 		free_stacks(&stack_a, &stack_b);
 	}
 	free_split(flatened_argv);
+	// if (checker_bonus(argc, argv) == 1)
+	// 	printf("OK");
+	// else
+	// 	printf("KO");
 	return (0);
 }

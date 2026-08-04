@@ -14,18 +14,12 @@
 # define BONUS_H
 
 # include <unistd.h>
-# include <stdio.h>
-# include <stdlib.h>
-# define BUFFER_SIZE 7
+# include "../include/push_swap.h"
 
-char			*get_next_line(int fd);
+char	**read_rules();
 
-unsigned	int	ft_strlcat(char *dest, const char *src, size_t size);
+int		checker_bonus(int argc, char **argv);
 
-size_t			ft_strlen(const char *s);
-
-size_t			ft_strlcpy(char *dest, const char *src, size_t n);
-
-int				ft_strchr_n(const char *s, int c);
+void	apply_moves(t_stack *a, t_stack *b, char **moves);
 
 #endif

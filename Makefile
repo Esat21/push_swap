@@ -22,7 +22,9 @@ SRCS =	main.c \
 		src/sorting_algorithms/medium_algorithm.c \
 		src/sorting_algorithms/complex_algorithm.c \
 		src/sorting_algorithms/complex_algorithm_utils.c \
-		src/sorting_algorithms/adaptive_algorithm.c
+		src/sorting_algorithms/adaptive_algorithm.c \
+		bonus/checker_main.c \
+		bonus/checker_utils.c
 
 OBJS = $(SRCS:.c=.o)
 

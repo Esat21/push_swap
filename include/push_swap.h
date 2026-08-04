@@ -14,9 +14,9 @@
 # define PUSH_SWAP_H
 
 # include <stdlib.h>
-# include "libft.h"
 # include <stdio.h>
 # include <limits.h>
+# include "libft.h"
 
 typedef struct s_node
 {
