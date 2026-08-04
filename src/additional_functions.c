@@ -20,10 +20,10 @@ void	print_stack(t_stack *stack)
 	curr = stack->first;
 	while (curr)
 	{
-		printf("%d ", curr->value);
+		ft_printf_fd(1, "%d ", curr->value);
 		curr = curr->next;
 	}
-	printf("\n");
+	ft_printf_fd(1, "\n");
 }
 
 void	print_metrics(t_bench_metrics *metrics)

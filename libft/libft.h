@@ -14,6 +14,8 @@
 # define LIBFT_H
 
 # include <stddef.h>
+# include <stdarg.h>
+# include <unistd.h>
 
 typedef struct s_list
 {
@@ -67,13 +69,23 @@ void	*ft_memmove(void *dest, const void *src, size_t n);
 
 void	*ft_memset(void *s, int c, size_t n);
 
-void	ft_putchar_fd(char c, int fd);
+int		ft_putchar_fd(char c, int fd);
 
 void	ft_putendl_fd(char *s, int fd);
 
 void	ft_putnbr_fd(int n, int fd);
 
-void	ft_putstr_fd(char *s, int fd);
+int		ft_putstr_fd(char *s, int fd);
+
+int		ft_putunbr_base_fd(
+	unsigned long long n, char *base, int nbase, int fd
+);
+
+int		ft_putnbr_base_fd(long long n, char *base, int nbase, int fd);
+
+int		ft_printf_fd(int fd, const char *s, ...);
+
+int		ft_putptr_fd(void *ptr, int fd);
 
 char	**ft_split(char const *s, char c);
 
