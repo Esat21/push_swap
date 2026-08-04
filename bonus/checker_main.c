@@ -28,7 +28,7 @@ int	main(int argc, char **argv)
 		stack_a->metrics->disorder = compute_disorder(stack_a);
 		if (stack_a->metrics->disorder == 0)
 			return (0); // already sorted. Will replace this later once we have a general checker for already sorted input
-		moves = read_rules(); // reading rules from stdin
+		moves = read_rules();
 		apply_moves(stack_a, stack_b, moves);
 		stack_a->metrics->disorder = compute_disorder(stack_a);
 		if (stack_a->metrics->disorder == 0)

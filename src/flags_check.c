@@ -53,7 +53,7 @@ int	find_flags(int argc, char **argv, t_flags *flags)
 		if (is_flag(argv[i]))
 			set_flag(argv[i], flags);
 	}
-	t = flags->is_adaptive + flags->is_simple + flags->is_medium + flags->is_complex;
+	t = flags->is_simple + flags->is_medium + flags->is_complex;
 	if (t > 1)
 		return (0);
 	return (1);
