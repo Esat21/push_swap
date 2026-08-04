@@ -50,7 +50,7 @@ static int	count_tokens(int argc, char **argv, char c)
 	return (count);
 }
 
-char	**flatten_args(int argc, char **argv, int *total_nums, char c)
+char	**flatten_args(int argc, char **argv, int *total_nums)
 {
 	char	**flat;
 	char	**split;
@@ -58,7 +58,7 @@ char	**flatten_args(int argc, char **argv, int *total_nums, char c)
 	int		j;
 	int		k;
 
-	*total_nums = count_tokens(argc, argv, c);
+	*total_nums = count_tokens(argc, argv, ' ');
 	if (*total_nums == 0)
 		return (NULL);
 	flat = malloc(sizeof(char *) * (*total_nums + 1));
@@ -68,7 +68,7 @@ char	**flatten_args(int argc, char **argv, int *total_nums, char c)
 	k = 0;
 	while (++i < argc)
 	{
-		split = ft_split(argv[i], c);
+		split = ft_split(argv[i], ' ');
 		j = 0;
 		while (split && split[j])
 			flat[k++] = split[j++];

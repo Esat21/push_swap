@@ -6,7 +6,7 @@
 /*   By: esyaman <esyaman@student.42warsaw.pl>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/03 18:49:38 by esyaman           #+#    #+#             */
-/*   Updated: 2026/08/03 19:42:54 by esyaman          ###   ########.fr       */
+/*   Updated: 2026/08/04 11:24:07 by esyaman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	checker_bonus(int argv, char **argc)
 	t_stack	*stack_a;
 	t_stack	*stack_b;
 
-	flatened_argc = flatten_args(argc, argv, &total_args, ' ');
+	flatened_argc = flatten_args(argc, argv, &total_args);
 	
 	if (input_check(total_args, flatened_argc))
 	{

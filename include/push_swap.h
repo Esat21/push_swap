@@ -16,6 +16,7 @@
 # include <stdlib.h>
 # include "libft.h"
 # include <stdio.h>
+# include <limits.h>
 
 typedef struct s_node
 {
@@ -123,9 +124,11 @@ void			handle_small_a(t_stack *a, t_stack *b, int size);
 
 int				is_flag(char *s);
 
-char			**flatten_args(int argc, char **argv, int *total_nums, char c);
+char			**flatten_args(int argc, char **argv, int *total_nums);
 
 void			free_split(char **split);
+
+long			ft_atol(const char *nptr);
 
 int				input_check(int argc, char **argv);
 
