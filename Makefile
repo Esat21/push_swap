@@ -2,9 +2,9 @@ CC = cc
 CFLAGS = -Wall -Werror -Wextra -I ./include/ -I ./libft/
 
 NAME = push_swap
+BONUS = checker
 
-SRCS =	main.c \
-		src/push_swap.c \
+SRCS =	src/push_swap.c \
 		src/utils.c \
 		src/additional_functions.c \
 		src/bench.c \
@@ -22,29 +22,39 @@ SRCS =	main.c \
 		src/sorting_algorithms/medium_algorithm.c \
 		src/sorting_algorithms/complex_algorithm.c \
 		src/sorting_algorithms/complex_algorithm_utils.c \
-		src/sorting_algorithms/adaptive_algorithm.c \
-		bonus/checker_main.c \
-		bonus/checker_utils.c
+		src/sorting_algorithms/adaptive_algorithm.c
+
+
+SRCS_BONUS =	./bonus/checker_main.c \
+				./bonus/checker_utils.c \
+				./bonus/checker_rules.c \
+				$(SRCS)
 
 OBJS = $(SRCS:.c=.o)
+
+OBJS_BONUS = $(SRCS_BONUS:.c=.o)
 
 all: $(NAME)
 
 $(NAME): $(OBJS)
+	make -C ./libft 
+	$(CC) $(CFLAGS) $^ -o $@ ./libft/libft.a main.c
+
+bonus: $(OBJS_BONUS)
 	make -C ./libft
-	$(CC) $(CFLAGS) $^ -o $@ ./libft/libft.a
+	$(CC) $(CFLAGS) $^ -o $(BONUS) ./libft/libft.a
 
 %.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
 	make clean -C ./libft
-	rm -f $(OBJS)
+	rm -f $(OBJS) $(OBJS_BONUS)
 
 fclean:
 	make fclean -C ./libft
-	rm -f $(OBJS) $(NAME)
+	rm -f $(OBJS) $(OBJS_BONUS) $(NAME) $(BONUS)
 
 re: fclean all
 
-.PHONY: all clean fclean re
+.PHONY: all clean fclean re bonus

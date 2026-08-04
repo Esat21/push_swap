@@ -22,4 +22,8 @@ int		checker_bonus(int argc, char **argv);
 
 void	apply_moves(t_stack *a, t_stack *b, char **moves);
 
+void	rules_handling_checker(t_stack *a, t_stack *b, char *rule);
+
+
+
 #endif

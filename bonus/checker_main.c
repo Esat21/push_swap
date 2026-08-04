@@ -12,7 +12,7 @@
 
 #include "bonus.h"
 
-int	checker_bonus(int argc, char **argv)
+int	main(int argc, char **argv)
 {
 	char	**flatened_argc;
 	int		total_args;
@@ -32,7 +32,9 @@ int	checker_bonus(int argc, char **argv)
 		apply_moves(stack_a, stack_b, moves);
 		stack_a->metrics->disorder = compute_disorder(stack_a);
 		if (stack_a->metrics->disorder == 0)
-			return (1);
+			ft_printf_fd(1, "OK\n");
+		else
+			ft_printf_fd(1, "KO\n");
 	}
 	return (0);
 }

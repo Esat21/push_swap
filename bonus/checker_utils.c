@@ -72,6 +72,7 @@ void	apply_moves(t_stack *a, t_stack *b, char **moves)
 	int	i;
 
 	i = -1;
+	
 	while (moves[++i])
-		rules_handling(a, b, moves[i]);
+		rules_handling_checker(a, b, moves[i]);
 }
