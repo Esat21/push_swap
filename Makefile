@@ -7,6 +7,7 @@ SRCS =	main.c \
 		src/push_swap.c \
 		src/utils.c \
 		src/additional_functions.c \
+		src/bench.c \
 		src/clear_operations.c \
 		src/disorder_metric.c \
 		src/list_operations.c \

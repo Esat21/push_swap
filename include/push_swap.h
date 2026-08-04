@@ -138,6 +138,8 @@ void			push_swap(t_stack *a, t_stack *b);
 
 void			rotate_n_times(t_stack *a, t_stack *b, int n, char *rule);
 
+void			print_bench(t_bench_metrics *m);
+
 // additional functions (not needed in proj)
 void			print_stack(t_stack *stack);
 
