@@ -35,19 +35,26 @@ int	is_allnum(int argc, char **argv)
 {
 	int	i;
 	int	j;
+	int	flags;
 
 	i = -1;
+	flags = 0;
 	while (++i < argc)
 	{
 		if (is_flag(argv[i]))
+		{
+			if (ft_strncmp(argv[i], "--bench", 8))
+				flags++;
+			if (flags > 1)
+				return (0);
 			continue ;
-		j = 0;
-		while (argv[i][j])
+		}
+		j = -1;
+		while (argv[i][++j])
 		{
 			if (!ft_isdigit(argv[i][j]) && argv[i][j] != '-'
 				&& argv[i][j] != '+')
 				return (0);
-			j++;
 		}
 	}
 	return (1);

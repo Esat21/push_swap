@@ -15,7 +15,6 @@
 void	push_swap(t_stack *a, t_stack *b)
 {
 	stack_normalisation(a->first);
-	a->metrics->disorder = compute_disorder(a);
 	if (a->flags->is_simple)
 	{
 		a->metrics->strategy = ft_strdup("Simple");
