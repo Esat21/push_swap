@@ -25,8 +25,6 @@ int	main(int argc, char **argv)
 	{
 		stack_a = create_stack_a(total_args, flatened_argv);
 		stack_b = init_stack();
-		// if (stack_a->metrics->disorder == 0)
-		// 	return (0);
 		if (!find_flags(total_args, flatened_argv, stack_a->flags))
 		{
 			ft_putendl_fd("Error", 2);
