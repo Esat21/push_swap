@@ -25,17 +25,15 @@ static int	ft_check_command(va_list *args, char c, int fd)
 	if (c == 'u')
 		return (
 			ft_putunbr_base_fd(
-				va_arg(*args, unsigned int), "0123456789", 10, fd
-			)
-		);
+				va_arg(*args, unsigned int), "0123456789", 10, fd));
 	if (c == 'x')
 		return (
-			ft_putunbr_base_fd(va_arg(*args, unsigned int), "0123456789abcdef", 16, fd)
-		);
+			ft_putunbr_base_fd(va_arg(*args, unsigned int),
+				"0123456789abcdef", 16, fd));
 	if (c == 'X')
 		return (
-			ft_putunbr_base_fd(va_arg(*args, unsigned int), "0123456789ABCDEF", 16, fd)
-		);
+			ft_putunbr_base_fd(va_arg(*args, unsigned int),
+				"0123456789ABCDEF", 16, fd));
 	if (c == '%')
 		return (write(fd, "%", 1));
 	return (0);

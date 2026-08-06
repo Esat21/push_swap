@@ -69,8 +69,8 @@ static int	is_in_range(int argc, char **argv)
 	{
 		if (is_flag(argv[i]))
 			continue ;
-		if (ft_strlen(argv[i]) > 11 ||
-			(ft_atol(argv[i]) > INT_MAX || ft_atol(argv[i]) < INT_MIN))
+		if (ft_strlen(argv[i]) > 11 || (ft_atol(argv[i]) > INT_MAX
+				|| ft_atol(argv[i]) < INT_MIN))
 			return (0);
 	}
 	return (1);
@@ -78,7 +78,8 @@ static int	is_in_range(int argc, char **argv)
 
 int	input_check(int argc, char **argv)
 {
-	if (!is_unique(argc, argv) || !is_allnum(argc, argv) || !is_in_range(argc, argv))
+	if (!is_unique(argc, argv) || !is_allnum(argc, argv)
+		|| !is_in_range(argc, argv))
 	{
 		ft_putendl_fd("Error", 2);
 		return (0);

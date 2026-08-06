@@ -16,14 +16,10 @@
 # include <unistd.h>
 # include "../include/push_swap.h"
 
-char	**read_rules();
-
-int		checker_bonus(int argc, char **argv);
+char	**read_rules(void);
 
 void	apply_moves(t_stack *a, t_stack *b, char **moves);
 
 void	rules_handling_checker(t_stack *a, t_stack *b, char *rule);
-
-
 
 #endif

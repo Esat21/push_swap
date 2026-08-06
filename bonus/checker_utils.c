@@ -44,7 +44,7 @@ char	**rules_split(char *rules)
 	return (rules_splitted);
 }
 
-char	**read_rules()
+char	**read_rules(void)
 {
 	char	**rules;
 	int		bytes;
@@ -53,6 +53,7 @@ char	**read_rules()
 	char	buf[2048];
 
 	content = NULL;
+	rules = NULL;
 	total = 0;
 	bytes = read(0, buf, 2048);
 	while (bytes > 0)
@@ -63,7 +64,9 @@ char	**read_rules()
 		total += bytes;
 		bytes = read(0, buf, 2048);
 	}
-	rules = rules_split(content);
+	if (content)
+		rules = rules_split(content);
+	free(content);
 	return (rules);
 }
 
@@ -72,7 +75,6 @@ void	apply_moves(t_stack *a, t_stack *b, char **moves)
 	int	i;
 
 	i = -1;
-	
-	while (moves[++i])
+	while (moves && moves[++i])
 		rules_handling_checker(a, b, moves[i]);
 }

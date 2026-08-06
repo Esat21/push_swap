@@ -78,8 +78,7 @@ void	ft_putnbr_fd(int n, int fd);
 int		ft_putstr_fd(char *s, int fd);
 
 int		ft_putunbr_base_fd(
-	unsigned long long n, char *base, int nbase, int fd
-);
+			unsigned long long n, char *base, int nbase, int fd);
 
 int		ft_putnbr_base_fd(long long n, char *base, int nbase, int fd);
 

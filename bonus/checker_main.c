@@ -25,16 +25,16 @@ int	main(int argc, char **argv)
 	{
 		stack_a = create_stack_a(total_args, flatened_argc);
 		stack_b = init_stack();
-		stack_a->metrics->disorder = compute_disorder(stack_a);
-		if (stack_a->metrics->disorder == 0)
-			return (0);
 		moves = read_rules();
 		apply_moves(stack_a, stack_b, moves);
 		stack_a->metrics->disorder = compute_disorder(stack_a);
-		if (stack_a->metrics->disorder == 0 && (int)stack_a->size == total_args)
+		if (stack_a->metrics->disorder == 0 && !stack_b->size)
 			ft_printf_fd(1, "OK\n");
 		else
 			ft_printf_fd(1, "KO\n");
+		free_split(moves);
+		free_stacks(&stack_a, &stack_b);
 	}
+	free_split(flatened_argc);
 	return (0);
 }

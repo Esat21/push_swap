@@ -30,7 +30,7 @@ int	ft_putunbr_base_fd(unsigned long long n, char *base, int nbase, int fd)
 int	ft_putnbr_base_fd(long long n, char *base, int nbase, int fd)
 {
 	int		size;
-	
+
 	size = 0;
 	if (n < 0)
 	{
