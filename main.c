@@ -28,11 +28,9 @@ int	main(int argc, char **argv)
 		stack_a->metrics->disorder = compute_disorder(stack_a);
 		find_flags(total_args, flatened_argv, stack_a->flags);
 		if (stack_a->metrics->disorder != 0)
-		{
 			push_swap(stack_a, stack_b);
-			if (stack_a->flags->is_bench)
-				print_bench(stack_a->metrics);
-		}
+		if (stack_a->flags->is_bench)
+			print_bench(stack_a->metrics);
 		free_stacks(&stack_a, &stack_b);
 	}
 	free_split(flatened_argv);
