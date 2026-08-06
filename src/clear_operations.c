@@ -22,7 +22,7 @@
  *
  * @param lst A pointer to the head pointer of the linked list to be freed.
  */
-void	free_lst(t_node **lst)
+static void	free_lst(t_node **lst)
 {
 	t_node	*curr;
 	t_node	*next;
@@ -37,6 +37,14 @@ void	free_lst(t_node **lst)
 		curr = next;
 	}
 	*lst = NULL;
+}
+
+static void	free_metrics(t_bench_metrics **metrix)
+{
+	free((*metrix)->strategy);
+	free((*metrix)->algorithm);
+	free(*metrix);
+	*metrix = NULL;
 }
 
 /**
@@ -70,12 +78,4 @@ void	free_stacks(t_stack **a, t_stack **b)
 		free(*b);
 		*b = NULL;
 	}
-}
-
-void	free_metrics(t_bench_metrics **metrix)
-{
-	free((*metrix)->strategy);
-	free((*metrix)->algorithm);
-	free(*metrix);
-	*metrix = NULL;
 }

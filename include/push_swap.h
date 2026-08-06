@@ -82,11 +82,7 @@ void			stack_add_front(t_stack *lst, t_node *new);
 
 void			stack_add_back(t_stack *lst, t_node *new);
 
-void			free_lst(t_node **lst);
-
 void			free_stacks(t_stack **a, t_stack **b);
-
-void			free_metrics(t_bench_metrics **metrix);
 
 float			compute_disorder(t_stack *stack);
 
@@ -121,6 +117,8 @@ void			bring_b_to_beginning(t_stack *a, t_stack *b, t_qsp *qsp);
 void			rules_handling(t_stack *a, t_stack *b, char *rule);
 
 void			handle_small_a(t_stack *a, t_stack *b, int size);
+
+void			quick_sort_b(t_stack *a, t_stack *b, int min, int max);
 
 int				is_flag(char *s);
 

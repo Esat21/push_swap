@@ -6,8 +6,6 @@ BONUS = checker
 
 SRCS =	src/push_swap.c \
 		src/utils.c \
-		src/additional_functions.c \
-		src/bench.c \
 		src/clear_operations.c \
 		src/disorder_metric.c \
 		src/list_operations.c \
@@ -21,7 +19,7 @@ SRCS =	src/push_swap.c \
 		src/sorting_algorithms/simple_algorithm.c \
 		src/sorting_algorithms/medium_algorithm.c \
 		src/sorting_algorithms/complex_algorithm.c \
-		src/sorting_algorithms/complex_algorithm_utils.c \
+		src/sorting_algorithms/algorithm_utils.c \
 		src/sorting_algorithms/adaptive_algorithm.c
 
 

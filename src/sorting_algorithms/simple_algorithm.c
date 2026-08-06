@@ -12,19 +12,6 @@
 
 #include "push_swap.h"
 
-int	get_index(t_node *node, unsigned int val)
-{
-	int	i;
-
-	i = 0;
-	while (node && node->normalised != val)
-	{
-		node = node->next;
-		i++;
-	}
-	return (i);
-}
-
 void	selection_sort(t_stack *stack_a, t_stack *stack_b)
 {
 	unsigned int	i;

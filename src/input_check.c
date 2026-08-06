@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-int	is_unique(int argc, char **argv)
+static int	is_unique(int argc, char **argv)
 {
 	int	i;
 	int	j;
@@ -31,7 +31,7 @@ int	is_unique(int argc, char **argv)
 	return (1);
 }
 
-int	is_allnum(int argc, char **argv)
+static int	is_allnum(int argc, char **argv)
 {
 	int	i;
 	int	j;
@@ -60,7 +60,7 @@ int	is_allnum(int argc, char **argv)
 	return (1);
 }
 
-int	is_in_range(int argc, char **argv)
+static int	is_in_range(int argc, char **argv)
 {
 	int	i;
 

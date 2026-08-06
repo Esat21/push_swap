@@ -1,16 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   complex_algorithm_utils.c                          :+:      :+:    :+:   */
+/*   algorithm_utils.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ssokhats <ssokhats@student.42warsaw.pl>    +#+  +:+       +#+        */
+/*   By: esyaman <esyaman@student.42warsaw.pl>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/07/27 20:42:49 by ssokhats          #+#    #+#             */
-/*   Updated: 2026/07/27 20:42:49 by ssokhats         ###   ########.fr       */
+/*   Created: 2026/08/06 15:28:54 by esyaman           #+#    #+#             */
+/*   Updated: 2026/08/06 15:28:54 by esyaman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+int	get_index(t_node *node, unsigned int val)
+{
+	int	i;
+
+	i = 0;
+	while (node && node->normalised != val)
+	{
+		node = node->next;
+		i++;
+	}
+	return (i);
+}
 
 void	push_below_pivot(t_stack *a, t_stack *b, t_qsp *qsp)
 {

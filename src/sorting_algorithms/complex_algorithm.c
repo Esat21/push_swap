@@ -12,8 +12,6 @@
 
 #include "push_swap.h"
 
-void	quick_sort_b(t_stack *a, t_stack *b, int min, int max);
-
 void	handle_small_a(t_stack *a, t_stack *b, int size)
 {
 	if (size <= 1)

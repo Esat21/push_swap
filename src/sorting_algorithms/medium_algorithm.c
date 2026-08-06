@@ -50,7 +50,7 @@ static int	get_index_in_range(t_node *node, unsigned int range)
 	return (i);
 }
 
-void	sort_chunks(t_stack *a, t_stack *b, unsigned int chunk_size)
+static void	sort_chunks(t_stack *a, t_stack *b, unsigned int chunk_size)
 {
 	unsigned int	i;
 	int				j;

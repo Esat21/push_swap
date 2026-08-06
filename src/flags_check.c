@@ -28,7 +28,7 @@ int	is_flag(char *s)
 	return (0);
 }
 
-void	set_flag(char *s, t_flags *flags)
+static void	set_flag(char *s, t_flags *flags)
 {
 	if (!ft_strncmp("--adaptive", s, 11))
 		flags->is_adaptive = 1;
