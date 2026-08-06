@@ -14,12 +14,27 @@
 # define BONUS_H
 
 # include <unistd.h>
-# include "../include/push_swap.h"
+# include "libft.h"
 
-char	**read_rules(void);
+typedef struct s_node
+{
+	int				value;
+	struct s_node	*next;
+	unsigned int	normalised;
+}			t_node;
 
-void	apply_moves(t_stack *a, t_stack *b, char **moves);
+typedef struct s_stack
+{
+	t_node			*first;
+	t_node			*last;
+	unsigned int	size;
+}			t_stack;
 
+// checker_rules.c
 void	rules_handling_checker(t_stack *a, t_stack *b, char *rule);
+
+// checker_utils.c
+char	**read_rules(void);
+void	apply_moves(t_stack *a, t_stack *b, char **moves);
 
 #endif

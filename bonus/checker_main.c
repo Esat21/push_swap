@@ -27,8 +27,7 @@ int	main(int argc, char **argv)
 		stack_b = init_stack();
 		moves = read_rules();
 		apply_moves(stack_a, stack_b, moves);
-		stack_a->metrics->disorder = compute_disorder(stack_a);
-		if (stack_a->metrics->disorder == 0 && !stack_b->size)
+		if (compute_disorder(stack_a) == 0 && !stack_b->size)
 			ft_printf_fd(1, "OK\n");
 		else
 			ft_printf_fd(1, "KO\n");
