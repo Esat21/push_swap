@@ -6,7 +6,7 @@
 /*   By: esyaman <esyaman@student.42warsaw.pl>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/04 20:38:36 by esyaman           #+#    #+#             */
-/*   Updated: 2026/08/07 12:22:32 by esyaman          ###   ########.fr       */
+/*   Updated: 2026/08/07 12:42:51 by esyaman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,9 +91,12 @@ static int	handler_3(t_stack *a, t_stack *b, char *rule)
 
 int	rules_handling_checker(t_stack *a, t_stack *b, char *rule)
 {
-	if (handler_1(a, b, rule) + handler_2(a, b, rule)
-		+ handler_3(a, b, rule) < 1)
-			return (0);
-	else
+	if (handler_1(a, b, rule))
 		return (1);
+	else if (handler_2(a, b, rule))
+		return (1);
+	else if (handler_3(a, b, rule))
+		return (1);
+	else
+		return (0);
 }
