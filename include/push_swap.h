@@ -70,77 +70,70 @@ typedef struct s_qsp
 	int				size;
 }				t_qsp;
 
-t_node			*newnode(int value);
-
-t_stack			*init_stack(void);
-
-t_stack			*create_stack_a(int argc, char **argv);
-
-t_bench_metrics	*bench_metrics_init(void);
-
-void			stack_add_front(t_stack *lst, t_node *new);
-
-void			stack_add_back(t_stack *lst, t_node *new);
-
-void			free_stacks(t_stack **a, t_stack **b);
-
-float			compute_disorder(t_stack *stack);
-
-void			stack_normalisation(t_node *stack);
-
-void			stack_swap(t_stack *lst);
-
-void			stack_push(t_stack *dest, t_stack *src);
-
-void			stack_rotate(t_stack *lst);
-
-void			stack_rrotate(t_stack *lst);
-
-int				get_index(t_node *node, unsigned int val);
-
-void			selection_sort(t_stack *stack_a, t_stack *stack_b);
-
-void			chunk_sort(t_stack *a, t_stack *b);
-
-void			quick_sort(t_stack *a, t_stack *b);
-
+// src/sorting_algorithms/adaptive_algorithm.c
 void			adaptive_algorithm(t_stack *a, t_stack *b);
 
+// src/sorting_algorithms/algorithms_utils.c
+int				get_index(t_node *node, unsigned int val);
 void			push_below_pivot(t_stack *a, t_stack *b, t_qsp *qsp);
-
 void			push_above_pivot(t_stack *a, t_stack *b, t_qsp *qsp);
-
 void			bring_a_to_beginning(t_stack *a, t_stack *b, t_qsp *qsp);
-
 void			bring_b_to_beginning(t_stack *a, t_stack *b, t_qsp *qsp);
 
-void			rules_handling(t_stack *a, t_stack *b, char *rule);
-
+// src/sorting_algorithms/complex_algorithm.c
 void			handle_small_a(t_stack *a, t_stack *b, int size);
+void			quick_sort(t_stack *a, t_stack *b);
 
-void			quick_sort_b(t_stack *a, t_stack *b, int min, int max);
+// src/sorting_algorithms/medium_algorithm.c
+void			chunk_sort(t_stack *a, t_stack *b);
 
+// src/sorting_algorithms/simple_algorithm.c
+void			selection_sort(t_stack *stack_a, t_stack *stack_b);
+
+// src/clear_operations.c
+void			free_stacks(t_stack **a, t_stack **b);
+
+// src/disorder_metric.c
+float			compute_disorder(t_stack *stack);
+
+// src/flag_check.c
 int				is_flag(char *s);
-
-char			**flatten_args(int argc, char **argv, int *total_nums);
-
-void			free_split(char **split);
-
-long			ft_atol(const char *nptr);
-
-int				input_check(int argc, char **argv);
-
 int				find_flags(int argc, char **argv, t_flags *flags);
 
+// src/flattern_args.c
+void			free_split(char **split);
+char			**flatten_args(int argc, char **argv, int *total_nums);
+
+// src/input_check.c
+int				input_check(int argc, char **argv);
+
+// list_operations.c
+t_node			*newnode(int value);
+void			stack_add_back(t_stack *lst, t_node *new);
+void			stack_add_front(t_stack *lst, t_node *new);
+
+// normalization.c
+void			stack_normalisation(t_node *stack);
+
+// ps_rules_handling.c
+void			rules_handling(t_stack *a, t_stack *b, char *rule);
+
+// ps_rules.c
+void			stack_swap(t_stack *lst);
+void			stack_push(t_stack *dest, t_stack *src);
+void			stack_rotate(t_stack *lst);
+void			stack_rrotate(t_stack *lst);
+
+// push_swap.c
 void			push_swap(t_stack *a, t_stack *b);
 
+// stack_creation.c
+t_stack			*init_stack(void);
+t_stack			*create_stack_a(int argc, char **argv);
+
+// utils.c
 void			rotate_n_times(t_stack *a, t_stack *b, int n, char *rule);
-
+long			ft_atol(const char *nptr);
 void			print_bench(t_bench_metrics *m);
-
-// additional functions (not needed in proj)
-void			print_stack(t_stack *stack);
-
-void			print_metrics(t_bench_metrics *metrics);
 
 #endif

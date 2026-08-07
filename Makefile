@@ -72,6 +72,6 @@ bonus-fclean:
 	make fclean -C ./libft
 	rm -f $(OBJS_BONUS) $(BONUS)
 
-bonus-re: bonus fclean bonus
+bonus-re: bonus-fclean bonus
 
-.PHONY: all clean fclean re bonus
+.PHONY: all clean fclean re bonus bonus-clean bonus-fclean bonus-re

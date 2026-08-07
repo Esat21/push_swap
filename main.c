@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include "bonus/bonus.h"
 
 int	main(int argc, char **argv)
 {

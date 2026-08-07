@@ -12,16 +12,6 @@
 
 #include "bonus.h"
 
-/**
- * @brief Allocates and initializes a new stack.
- *
- * Dynamically allocates memory for a `t_stack` structure and initializes 
- * its members (`first` and `last` to `NULL`, and `size` to `0`).
- *
- * @return A pointer to the newly allocated and initialized `t_stack` 
- * on success.
- * @retval NULL If memory allocation fails.
- */
 t_stack	*init_stack(void)
 {
 	t_stack	*lst;

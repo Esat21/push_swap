@@ -12,6 +12,9 @@
 
 #include "push_swap.h"
 
+static void	quick_sort_a(t_stack *a, t_stack *b, int min, int max);
+static void	quick_sort_b(t_stack *a, t_stack *b, int min, int max);
+
 void	handle_small_a(t_stack *a, t_stack *b, int size)
 {
 	if (size <= 1)
@@ -24,7 +27,7 @@ void	handle_small_a(t_stack *a, t_stack *b, int size)
 	}
 }
 
-void	handle_small_b(t_stack *a, t_stack *b, int size)
+static void	handle_small_b(t_stack *a, t_stack *b, int size)
 {
 	if (size == 1)
 	{
@@ -41,7 +44,7 @@ void	handle_small_b(t_stack *a, t_stack *b, int size)
 	}
 }
 
-void	quick_sort_a(t_stack *a, t_stack *b, int min, int max)
+static void	quick_sort_a(t_stack *a, t_stack *b, int min, int max)
 {
 	t_qsp	qsp;
 
@@ -60,7 +63,7 @@ void	quick_sort_a(t_stack *a, t_stack *b, int min, int max)
 	quick_sort_b(a, b, min, qsp.pivot - 1);
 }
 
-void	quick_sort_b(t_stack *a, t_stack *b, int min, int max)
+static void	quick_sort_b(t_stack *a, t_stack *b, int min, int max)
 {
 	t_qsp	qsp;
 

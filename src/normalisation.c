@@ -12,16 +12,6 @@
 
 #include "push_swap.h"
 
-/**
- * @brief Assigns a relative rank to each node's value in the stack.
- *
- * This function normalizes the stack by counting how many other nodes have a
- * strictly greater value than the current node. It updates the `normalised`
- * field of each node, effectively giving it a rank (where higher values get
- * smaller ranks, and the absolute maximum value gets a rank of 0).
- *
- * @param stack A pointer to the first node of the stack.
- */
 void	stack_normalisation(t_node *stack)
 {
 	t_node	*i;
