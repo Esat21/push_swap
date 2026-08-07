@@ -33,11 +33,11 @@ typedef struct s_stack
 }			t_stack;
 
 // checker_rules.c
-void	rules_handling_checker(t_stack *a, t_stack *b, char *rule);
+int		rules_handling_checker(t_stack *a, t_stack *b, char *rule);
 
 // checker_utils.c
 char	**read_rules(void);
-void	apply_moves(t_stack *a, t_stack *b, char **moves);
+int		apply_moves(t_stack *a, t_stack *b, char **moves);
 long	ft_atol(const char *nptr);
 
 // clear_operations.c

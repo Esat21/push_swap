@@ -70,13 +70,18 @@ char	**read_rules(void)
 	return (rules);
 }
 
-void	apply_moves(t_stack *a, t_stack *b, char **moves)
+int	apply_moves(t_stack *a, t_stack *b, char **moves)
 {
 	int	i;
 
 	i = -1;
 	while (moves && moves[++i])
-		rules_handling_checker(a, b, moves[i]);
+		if (rules_handling_checker(a, b, moves[i]) == 0)
+		{
+			ft_printf_fd(2, "Error\n");
+			return (0);
+		}
+	return (1);
 }
 
 long	ft_atol(const char *nptr)
