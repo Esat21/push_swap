@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "bonus.h"
 
 static int	is_unique(int argc, char **argv)
 {
@@ -35,10 +35,8 @@ static int	is_allnum(int argc, char **argv)
 {
 	int	i;
 	int	j;
-	int	flags;
 
 	i = -1;
-	flags = 0;
 	while (++i < argc)
 	{
 		j = -1;
