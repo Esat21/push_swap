@@ -1,41 +1,179 @@
-# push_swap
+*This project has been created as part of the 42 curriculum by ssokhats, esyaman.*
 
-- (*done*) Disorder metric
-- (*done*) Linked lists creation
-- (*done*) Import Libft
-- (*done*) Rules creation
-- (*done*) Rules implementation
-- (*done*) Reading arguments (flags, input stdin)
-- (*done*) Add ft_printf and modify it to take fd to make it possible to print in stderr.
-- (2/3 *done*) Checker for inputs (allowed inputs etc)
-- Checker for output (bonus)
+# Push_swap
 
-- ### Algorithm implementation:
-  1. (*done*) Simple algorithm (O(n2));
-  2. (*done*) Medium algorithm (O(n√n));
-  3. (*done*) Complex algorithm (O(n log n))
-  4. (*done*) Adaptive algorithm
+## Description
 
-# Issues
-- For medium algorithm, 5 or less numbers:
-  - (*done*) there is extra rra before pb even when there is 1 node left in A. 
-  - (*done*) Also, there is rb happening when there is only 1 node in B. 
-  - (*done*) Also, the rra or ra if/else checker is not functioning optimally, it is choosing 2 rra instead of one ra. (*done*, tbh not sure how exactly, but it is not doing it anymore)
-- (*done* - follow up) Multiple flags are accepted, e.g. ./push_swap 2 1 3 4 5 --medium --simple --complex runs on simple and doesn't give any errors. We could scratch this edge case, nothing is mentioned. As backup, I made the default to Adaptive, i.e. if multiple flags provided, it will default to adaptive :)
-- Need to handle already sorted input, currently, we are still doing actions.
+**Push_swap** is an algorithmic group project in the 42 curriculum designed to explore algorithmic complexity (time and space) and sorting efficiency under tight operational constraints. 
 
+The goal is to sort a stack of integers in ascending order using two stacks (`a` and `b`) and a restricted set of allowed stack operations (swaps, pushes, and rotations). Rather than relying solely on a single static sorting algorithm, this implementation calculates input disorder metrics at runtime and dynamically selects or allows manual selection of four distinct complexity strategies.
 
-# Ideas:
-- Potentially, a better error handling for multiple flags as error is currently being handled in the main. 
-- Need to handle the bonus compilation. The checker is working now, might need refining and edge case handling.
+### Allowed Operations
+- **`sa` / `sb` / `ss`**: Swap the top two elements of stack `a`, stack `b`, or both simultaneously.
+- **`pa` / `pb`**: Push the top element from one stack onto the other.
+- **`ra` / `rb` / `rr`**: Rotate all elements up by one position (top element becomes the bottom).
+- **`rra` / `rrb` / `rrr`**: Reverse rotate all elements down by one position (bottom element becomes the top).
 
+---
 
-# TO DO
-- 
+## Technical & Algorithmic Strategy Choices
 
-# 16/07/2026
-- Added int	stack_size(t_stack *lst) to get size of the stack (number of numbers). To be used for implementation in e.g. disorder_metric.
+To satisfy the complexity requirements of the subject, the binary embeds four distinct sorting strategies selectable via flags:
 
-# 03/08/2026
-- Added exception for rb and rra when size b and a are 1. No need to rotate when there is only one node.
-- Also, verified that when we remove the hourglass thingy, for 5 numbers under 0.5 disorder, the no. of moves is always 15 or lower (acceptable) Added this by skipping the rb for hourglass for chunk size 5, it will also affect all list sizes until 35, but it is still okay since the next known performance metric after 5 numbers is 100 (confirm?). Could do a better/cleaner implementation??
+### 1. Simple Strategy ($O(n^2)$) — `--simple`
+- **Internal Method**: Selection Sort Adaptation.
+- **Mechanism**: Iteratively locates the minimum element in stack `a`, rotates it to the top using the shortest rotational path (`ra` or `rra`), and pushes it to stack `b`. Once `a` is emptied or reduced to a base size, elements are pushed back to `a`.
+- **Complexity**: $O(n^2)$ operations in worst and average cases.
+
+### 2. Medium Strategy ($O(n\sqrt{n})$) — `--medium`
+- **Internal Method**: Chunk Sort Adaptation.
+- **Mechanism**: Divides the range of sorted indices into $\lfloor\sqrt{n}\rfloor$ discrete chunks. Pushes values to stack `b` based on whether their index falls within the active chunk range, maintaining partial relative ordering in `b` using smart rotations (`rb`). Finally, elements are pushed back to `a` in strict descending order.
+- **Complexity**: $O(n\sqrt{n})$ operations on average with $O(n)$ space for indexed indexing.
+
+### 3. Complex Strategy ($O(n \log n)$) — `--complex`
+- **Internal Method**: Quick Sort Adaptation (Pivot Partitioning).
+- **Mechanism**: Selects a pivot value (e.g., median or element value) and partitions stack a by pushing elements smaller than the pivot to stack b (pb) while retaining larger elements in a using rotations (ra). Recursively splits both stacks into smaller partitions until base cases are reached, then merges elements back into a using precise pushes (pa).
+- **Complexity**: $O(n \log n)$ operation upper bound on average across all configurations, using $O(\log n)$ recursive stack space.
+
+### 4. Custom Adaptive Strategy — `--adaptive` (Default)
+The adaptive engine evaluates the structural **disorder metric** ($D$) of input stack `a` prior to executing any moves:
+
+$$\text{Disorder } (D) = \frac{\text{Number of inverted pairs}}{\text{Total unique pairs}} = \frac{\sum_{i < j} \mathbb{I}(a[i] > a[j])}{\frac{n(n-1)}{2}}$$
+
+- **Rationale & Thresholds**:
+  - **Low Disorder ($D < 0.2$)**: Uses an optimized $O(n^2)$ Insertion/Bubble variant. When an array is nearly sorted, adaptive local swaps and linear passes produce minimal operation counts (far lower overhead than full chunking/radix passes).
+  - **Medium Disorder ($0.2 \le D < 0.5$)**: Uses the $O(n\sqrt{n})$ Chunk-based algorithm to balance chunk management overhead and rotational cost.
+  - **High Disorder ($D \ge 0.5$)**: Uses the $O(n \log n)$ Complex algorithm (Radix / Quick Partitioning) to ensure strict, bounded performance when the stack is heavily inverted or randomized.
+
+---
+
+## Division of Work
+
+<!-- FREE SPACE FOR TEAMMATE WORK DIVISION -->
+
+| Teammate (`login`) | Responsibilities & Contributions |
+| :--- | :--- |
+| **`ssokhats`** | - `stack_creation.c`<br> - `flags_check.c`<br> - `flattern_args.c`<br> - `normalisation.c`<br> - `input_check.c` (is_unique, is_allnum)<br> - `utils.c` (print_bench)<br> - `ps_rules_handling.c`<br> - `disorder_metric.c`<br> - Bonus optimizations |
+| **`esyaman`** | - `input_check.c` (is_in_range)<br> - `utils.c` (`ft_atol`)<br> - `ps_rules.c`<br> - `list_operations.c`<br> - generate_disorder(python script)<br> - Full implementation of `bonus/*` (checker and bonus utilities)
+| **`both`** | - All sorting algorithms in `src/sorting_algorithms/`<br> - `main.c`<br> - `Makefile`<br> - `include/push_swap.h`
+
+---
+
+## Instructions
+
+### Compilation
+
+Compile the project using `make`:
+
+```bash
+# Compile the main push_swap program
+make
+
+# Compile the bonus checker program
+make bonus
+
+# Clean object files
+make clean
+
+# Full clean (remove binaries and objects)
+make fclean
+
+# Recompile everything
+make re
+```
+
+# Execution & Usage
+
+```bash
+# Default adaptive execution
+./push_swap 4 67 3 87 23
+
+# Explicit strategy selection
+./push_swap --simple 5 4 3 2 1
+./push_swap --medium 5 4 3 2 1
+./push_swap --complex 5 4 3 2 1
+./push_swap --adaptive 5 4 3 2 1
+
+# Benchmark mode (metrics sent to stderr, operations sent to stdout)
+./push_swap --bench 4 67 3 87 23
+```
+
+# Resources
+
+* Big-O Notation and Complexity Analysis for Stack-based Sorting.
+* YouTube (algorithms explanations).
+
+# generate_disorder.py 
+
+Script for generating disordered list of numbers.
+```python
+import sys
+import random
+
+def compute_disorder(a):
+    """Calculates exact disorder fraction matching your formula."""
+    mistakes = 0
+    total_pairs = 0
+    n = len(a)
+    for i in range(n):
+        for j in range(i + 1, n):
+            total_pairs += 1
+            if a[i] > a[j]:
+                mistakes += 1
+    return mistakes / total_pairs if total_pairs > 0 else 0.0
+
+def generate_exact_disorder(n, target_disorder):
+    if n <= 1:
+        return list(range(1, n + 1))
+
+    total_pairs = (n * (n - 1)) // 2
+    target_inversions = round(target_disorder * total_pairs)
+
+    # If target is <= 0.5, start sorted (0 inversions) and add inversions
+    if target_inversions <= total_pairs // 2:
+        a = list(range(1, n + 1))
+        swaps_needed = target_inversions
+        valid_indices = {i for i in range(n - 1) if a[i] < a[i + 1]}
+        
+        for _ in range(swaps_needed):
+            i = random.choice(tuple(valid_indices))
+            a[i], a[i + 1] = a[i + 1], a[i]
+            
+            # Update affected adjacent pairs
+            for idx in (i - 1, i, i + 1):
+                if 0 <= idx < n - 1:
+                    if a[idx] < a[idx + 1]:
+                        valid_indices.add(idx)
+                    else:
+                        valid_indices.discard(idx)
+
+    # If target is > 0.5, start reverse-sorted (max inversions) and remove inversions
+    else:
+        a = list(range(n, 0, -1))
+        swaps_needed = total_pairs - target_inversions
+        valid_indices = {i for i in range(n - 1) if a[i] > a[i + 1]}
+        
+        for _ in range(swaps_needed):
+            i = random.choice(tuple(valid_indices))
+            a[i], a[i + 1] = a[i + 1], a[i]
+            
+            for idx in (i - 1, i, i + 1):
+                if 0 <= idx < n - 1:
+                    if a[idx] > a[idx + 1]:
+                        valid_indices.add(idx)
+                    else:
+                        valid_indices.discard(idx)
+
+    return a
+
+if __name__ == "__main__":
+    count = int(sys.argv[1]) if len(sys.argv) > 1 else 10
+    disorder = float(sys.argv[2]) if len(sys.argv) > 2 else 0.3
+    disorder = max(0.0, min(1.0, disorder))
+
+    numbers = generate_exact_disorder(count, disorder)
+
+    # Output straight to terminal (clean for piping)
+    for num in numbers:
+        print(num)
+```
