@@ -1,14 +1,14 @@
-/* ************************************************************************** */
+/******************************************************************************/
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: esyaman <esyaman@student.42warsaw.pl>      +#+  +:+       +#+        */
+/*   By: ssokhats <ssokhats@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/13 18:06:09 by esyaman           #+#    #+#             */
-/*   Updated: 2026/07/19 16:57:07 by esyaman          ###   ########.fr       */
+/*   Updated: 2026/08/08 23:40:39 by ssokhats         ###   ########.fr       */
 /*                                                                            */
-/* ************************************************************************** */
+/******************************************************************************/
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
@@ -135,5 +135,6 @@ t_stack			*create_stack_a(int argc, char **argv);
 void			rotate_n_times(t_stack *a, t_stack *b, int n, char *rule);
 long			ft_atol(const char *nptr);
 void			print_bench(t_bench_metrics *m);
+// void	        print_stack(t_stack *stack);
 
 #endif

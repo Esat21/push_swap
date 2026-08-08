@@ -41,21 +41,19 @@ The adaptive engine evaluates the structural **disorder metric** ($D$) of input 
 $$\text{Disorder } (D) = \frac{\text{Number of inverted pairs}}{\text{Total unique pairs}} = \frac{\sum_{i < j} \mathbb{I}(a[i] > a[j])}{\frac{n(n-1)}{2}}$$
 
 - **Rationale & Thresholds**:
-  - **Low Disorder ($D < 0.2$)**: Uses an optimized $O(n^2)$ Insertion/Bubble variant. When an array is nearly sorted, adaptive local swaps and linear passes produce minimal operation counts (far lower overhead than full chunking/radix passes).
+  - **Low Disorder ($D < 0.2$)**: Uses an optimized $O(n^2)$ Selection sort algorithm. When an array is nearly sorted, adaptive local swaps and linear passes produce minimal operation counts.
   - **Medium Disorder ($0.2 \le D < 0.5$)**: Uses the $O(n\sqrt{n})$ Chunk-based algorithm to balance chunk management overhead and rotational cost.
-  - **High Disorder ($D \ge 0.5$)**: Uses the $O(n \log n)$ Complex algorithm (Radix / Quick Partitioning) to ensure strict, bounded performance when the stack is heavily inverted or randomized.
+  - **High Disorder ($D \ge 0.5$)**: Uses the $O(n \log n)$ Complex algorithm Quick Sort to ensure strict, bounded performance when the stack is heavily inverted or randomized.
 
 ---
 
 ## Division of Work
 
-<!-- FREE SPACE FOR TEAMMATE WORK DIVISION -->
-
 | Teammate (`login`) | Responsibilities & Contributions |
 | :--- | :--- |
 | **`ssokhats`** | - `stack_creation.c`<br> - `flags_check.c`<br> - `flattern_args.c`<br> - `normalisation.c`<br> - `input_check.c` (is_unique, is_allnum)<br> - `utils.c` (print_bench)<br> - `ps_rules_handling.c`<br> - `disorder_metric.c`<br> - Bonus optimizations |
-| **`esyaman`** | - `input_check.c` (is_in_range)<br> - `utils.c` (`ft_atol`)<br> - `ps_rules.c`<br> - `list_operations.c`<br> - generate_disorder(python script)<br> - Full implementation of `bonus/*` (checker and bonus utilities)
-| **`both`** | - All sorting algorithms in `src/sorting_algorithms/`<br> - `main.c`<br> - `Makefile`<br> - `include/push_swap.h`
+| **`esyaman`** | - `input_check.c` (is_in_range)<br> - `utils.c` (`ft_atol`)<br> - `ps_rules.c`<br> - `list_operations.c`<br> - generate_disorder(python script)<br> - Full implementation of `bonus/*`
+| **`both`** | - All sorting algorithms in `src/sorting_algorithms/`<br> - `main.c`<br> - `Makefile`<br> - `include/push_swap.h`<br> - Code review and bug fixing.
 
 ---
 
@@ -63,14 +61,11 @@ $$\text{Disorder } (D) = \frac{\text{Number of inverted pairs}}{\text{Total uniq
 
 ### Compilation
 
-Compile the project using `make`:
+Compile the main program using `make`:
 
 ```bash
 # Compile the main push_swap program
 make
-
-# Compile the bonus checker program
-make bonus
 
 # Clean object files
 make clean
@@ -96,6 +91,44 @@ make re
 
 # Benchmark mode (metrics sent to stderr, operations sent to stdout)
 ./push_swap --bench 4 67 3 87 23
+```
+
+## Bonus: Checker
+
+The bonus program `checker` reads a sequence of push_swap operations from standard input and verifies whether they correctly sort the provided stack.
+
+### Bonus compilation
+
+```bash
+# Compile the bonus checker program
+make bonus
+
+# Clean bonus object files
+make bonus-clean
+
+# Full bonus clean, remove binary and bonus objects
+make bonus-fclean
+
+# Rebuild bonus
+make bonus-re
+```
+
+### Bonus usage
+
+- Run with the same argument format as `push_swap`
+- Operations are read from `stdin` as newline-separated rules
+- Prints `OK` if the stack is sorted and stack `b` is empty after applying all moves
+- Prints `KO` if the result is not sorted or stack `b` is non-empty
+- Prints `Error` if any invalid operation is encountered
+
+### Example
+
+```bash
+# Run checker using move list from a file
+./checker 3 2 1 < moves.txt
+
+# Run checker interactively or via pipe
+echo -e "pb\nsa\npa" | ./checker 3 2 1
 ```
 
 # Resources
