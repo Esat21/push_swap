@@ -1,4 +1,4 @@
-/******************************************************************************/
+/* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   input_check.c                                      :+:      :+:    :+:   */
@@ -8,7 +8,7 @@
 /*   Created: 2026/07/30 22:19:08 by ssokhats          #+#    #+#             */
 /*   Updated: 2026/08/08 23:34:30 by ssokhats         ###   ########.fr       */
 /*                                                                            */
-/******************************************************************************/
+/* ************************************************************************** */
 
 #include "push_swap.h"
 
@@ -16,10 +16,18 @@ static int	is_unique_args(int argc, char **argv)
 {
 	int	i;
 	int	j;
+	int	flags;
 
 	i = -1;
-	while (++i < argc - 1)
+	flags = 0;
+	while (++i < argc)
 	{
+		if (is_flag(argv[i]) && ft_strncmp(argv[i], "--bench", 8))
+			flags++;
+		if (flags > 1)
+			return (0);
+		if (!ft_strncmp(argv[i], "-", 2) || !ft_strncmp(argv[i], "+", 2))
+			return (0);
 		j = i + 1;
 		while (j < argc)
 		{
@@ -35,26 +43,18 @@ static int	is_allnum(int argc, char **argv)
 {
 	int	i;
 	int	j;
-	int	flags;
 
 	i = -1;
-	flags = 0;
 	while (++i < argc)
 	{
 		if (is_flag(argv[i]))
-		{
-			if (ft_strncmp(argv[i], "--bench", 8))
-				flags++;
-			if (flags > 1)
-				return (0);
 			continue ;
-		}
 		j = -1;
 		while (argv[i][++j])
 		{
-            if (j == 0 && (ft_isdigit(argv[i][j]) || argv[i][j] == '-'
+			if (j == 0 && (ft_isdigit(argv[i][j]) || argv[i][j] == '-'
 				|| argv[i][j] == '+'))
-                continue ;
+				continue ;
 			if (!ft_isdigit(argv[i][j]))
 				return (0);
 		}
@@ -83,6 +83,8 @@ int	is_unique_nums(t_stack *stack)
 	t_node	*i;
 	t_node	*j;
 
+	if (!stack || !stack->first)
+		return (1);
 	i = stack->first;
 	while (i->next)
 	{

@@ -6,7 +6,7 @@
 /*   By: esyaman <esyaman@student.42warsaw.pl>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/04 20:38:36 by esyaman           #+#    #+#             */
-/*   Updated: 2026/08/07 12:42:51 by esyaman          ###   ########.fr       */
+/*   Updated: 2026/08/09 13:38:05 by esyaman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static int	handler_1(t_stack *a, t_stack *b, char *rule)
 		stack_push(b, a);
 		return (1);
 	}
-	else 
+	else
 		return (0);
 }
 
@@ -64,7 +64,6 @@ static int	handler_2(t_stack *a, t_stack *b, char *rule)
 	}
 	else
 		return (0);
-
 }
 
 static int	handler_3(t_stack *a, t_stack *b, char *rule)

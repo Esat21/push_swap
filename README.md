@@ -136,6 +136,10 @@ echo -e "pb\nsa\npa" | ./checker 3 2 1
 * Big-O Notation and Complexity Analysis for Stack-based Sorting.
 * YouTube (algorithms explanations).
 
+### AI usage:
+
+AI was used to help explain and understand the different sorting algorithms out there and to help in research implementations. AI also assisted with drafting and refining this README to better match the project requirements.
+
 # generate_disorder.py 
 
 Script for generating disordered list of numbers.

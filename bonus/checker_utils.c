@@ -76,11 +76,13 @@ int	apply_moves(t_stack *a, t_stack *b, char **moves)
 
 	i = -1;
 	while (moves && moves[++i])
+	{
 		if (rules_handling_checker(a, b, moves[i]) == 0)
 		{
 			ft_printf_fd(2, "Error\n");
 			return (0);
 		}
+	}
 	return (1);
 }
 
