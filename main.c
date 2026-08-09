@@ -26,7 +26,7 @@ int	main(int argc, char **argv)
 		stack_b = init_stack();
 		stack_a->metrics->disorder = compute_disorder(stack_a);
 		find_flags(total_args, flatened_argv, stack_a->flags);
-		if (is_unique_nums(stack_a))
+		if (is_unique_nums(stack_a) && is_space(argc, argv))
 		{
 			if (stack_a->metrics->disorder != 0)
 				push_swap(stack_a, stack_b);

@@ -136,6 +136,7 @@ t_stack			*create_stack_a(int argc, char **argv);
 void			rotate_n_times(t_stack *a, t_stack *b, int n, char *rule);
 long			ft_atol(const char *nptr);
 void			print_bench(t_bench_metrics *m);
+int				is_space(int argc, char **argv);
 // void	        print_stack(t_stack *stack);
 
 #endif

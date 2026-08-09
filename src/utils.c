@@ -65,6 +65,26 @@ void	print_bench(t_bench_metrics *m)
 		m->ra, m->rb, m->rr, m->rra, m->rrb, m->rrr);
 }
 
+int	is_space(int argc, char **argv)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (++i < argc)
+	{
+		if (!ft_strncmp(argv[i], " ", 2))
+			return (0);
+		j = -1;
+		while (++j < (int)ft_strlen(argv[i]) - 1)
+		{
+			if (argv[i][j] == ' ' && argv[i][j + 1] == ' ')
+				return (0);
+		}
+	}
+	return (1);
+}
+
 // For testing:
 // void	print_stack(t_stack *stack)
 // {
