@@ -25,8 +25,8 @@ int	main(int argc, char **argv)
 	{
 		stack_a = create_stack_a(total_args, flatened_argc);
 		stack_b = init_stack();
-		moves = read_rules();
-		if (apply_moves(stack_a, stack_b, moves) == 1)
+		moves = read_rules(total_args);
+		if (total_args > 0 && apply_moves(stack_a, stack_b, moves) == 1)
 		{
 			if (compute_disorder(stack_a) == 0 && !stack_b->size)
 				ft_printf_fd(1, "OK\n");

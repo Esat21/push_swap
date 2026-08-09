@@ -44,7 +44,7 @@ static char	**rules_split(char *rules)
 	return (rules_splitted);
 }
 
-char	**read_rules(void)
+char	**read_rules(int argc)
 {
 	char	**rules;
 	int		bytes;
@@ -55,17 +55,20 @@ char	**read_rules(void)
 	content = NULL;
 	rules = NULL;
 	total = 0;
-	bytes = read(0, buf, 2048);
-	while (bytes > 0)
+	if (argc > 1)
 	{
-		content = buffer_append(content, total, buf, bytes);
-		if (!content)
-			break ;
-		total += bytes;
 		bytes = read(0, buf, 2048);
+		while (bytes > 0)
+		{
+			content = buffer_append(content, total, buf, bytes);
+			if (!content)
+				break ;
+			total += bytes;
+			bytes = read(0, buf, 2048);
+		}
+		if (content)
+			rules = rules_split(content);
 	}
-	if (content)
-		rules = rules_split(content);
 	free(content);
 	return (rules);
 }
