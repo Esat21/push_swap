@@ -26,10 +26,15 @@ int	main(int argc, char **argv)
 		stack_b = init_stack();
 		stack_a->metrics->disorder = compute_disorder(stack_a);
 		find_flags(total_args, flatened_argv, stack_a->flags);
-		if (stack_a->metrics->disorder != 0)
-			push_swap(stack_a, stack_b);
-		if (stack_a->flags->is_bench)
-			print_bench(stack_a->metrics);
+		if (is_unique_nums(stack_a))
+		{		
+			if (stack_a->metrics->disorder != 0)
+				push_swap(stack_a, stack_b);
+			if (stack_a->flags->is_bench)
+				print_bench(stack_a->metrics);
+		}
+		else
+			ft_putendl_fd("Error", 2);
 		free_stacks(&stack_a, &stack_b);
 	}
 	free_split(flatened_argv);

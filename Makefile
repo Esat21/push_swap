@@ -4,24 +4,24 @@ CFLAGS = -Wall -Werror -Wextra -I ./include/ -I ./libft/
 NAME = push_swap
 BONUS = checker
 
-SRCS =	main.c \
-		src/push_swap.c \
-		src/utils.c \
-		src/clear_operations.c \
-		src/disorder_metric.c \
-		src/list_operations.c \
-		src/normalisation.c \
-		src/ps_rules_handling.c \
-		src/ps_rules.c \
-		src/stack_creation.c \
-		src/flags_check.c \
-		src/input_check.c \
-		src/flattern_args.c \
-		src/sorting_algorithms/simple_algorithm.c \
-		src/sorting_algorithms/medium_algorithm.c \
-		src/sorting_algorithms/complex_algorithm.c \
-		src/sorting_algorithms/algorithms_utils.c \
-		src/sorting_algorithms/adaptive_algorithm.c
+SRCS =			main.c \
+				src/push_swap.c \
+				src/utils.c \
+				src/clear_operations.c \
+				src/disorder_metric.c \
+				src/list_operations.c \
+				src/normalisation.c \
+				src/ps_rules_handling.c \
+				src/ps_rules.c \
+				src/stack_creation.c \
+				src/flags_check.c \
+				src/input_check.c \
+				src/flattern_args.c \
+				src/sorting_algorithms/simple_algorithm.c \
+				src/sorting_algorithms/medium_algorithm.c \
+				src/sorting_algorithms/complex_algorithm.c \
+				src/sorting_algorithms/algorithms_utils.c \
+				src/sorting_algorithms/adaptive_algorithm.c
 
 
 SRCS_BONUS =	./bonus/checker_main.c \

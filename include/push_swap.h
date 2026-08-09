@@ -106,6 +106,7 @@ char			**flatten_args(int argc, char **argv, int *total_nums);
 
 // src/input_check.c
 int				input_check(int argc, char **argv);
+int				is_unique_nums(t_stack *stack);
 
 // list_operations.c
 t_node			*newnode(int value);

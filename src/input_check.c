@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-static int	is_unique(int argc, char **argv)
+static int	is_unique_args(int argc, char **argv)
 {
 	int	i;
 	int	j;
@@ -78,9 +78,29 @@ static int	is_in_range(int argc, char **argv)
 	return (1);
 }
 
+int	is_unique_nums(t_stack *stack)
+{
+	t_node	*i;
+	t_node	*j;
+
+	i = stack->first;
+	while (i->next)
+	{
+		j = i->next;
+		while (j)
+		{
+			if (i->value == j->value)
+				return (0);
+			j = j->next;
+		}
+		i = i->next;
+	}
+	return (1);
+}
+
 int	input_check(int argc, char **argv)
 {
-	if (!is_unique(argc, argv) || !is_allnum(argc, argv)
+	if (!is_unique_args(argc, argv) || !is_allnum(argc, argv)
 		|| !is_in_range(argc, argv))
 	{
 		ft_putendl_fd("Error", 2);
